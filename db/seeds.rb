@@ -8,6 +8,8 @@
 Restaurant.destroy_all
 Address.destroy_all
 User.destroy_all
+Event.destroy_all
+Participant.destroy_all
 
 # Users
 romain = User.create!(first_name: 'Romain', last_name: 'Barbier', email: 'rb@sfr.fr', password: '123456')
@@ -24,4 +26,12 @@ romain_home = Address.create!(name: 'Home', full_address: '74 rue mazarine, 7500
 romain_work = Address.create!(name: 'Work', full_address: '2 bis Avenue Foch, 75116 Paris, France', user_id: romain.id)
 lucien_home = Address.create!(name: 'Home', full_address: '14 Rue Crespin du Gast, 75011 Paris, France', user_id: lucien.id)
 lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 75001 Paris, France', user_id: lucien.id)
+
+# Events
+dinner1 = Event.create!(date: Date.today, name: 'Diner des familles')
+
+# Participants
+romain1 = Participant.create!(event_id: dinner1.id, user_id: romain.id, owner: true, address_id: romain_home.id)
+lucien1 = Participant.create!(event_id: dinner1.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
+
 
