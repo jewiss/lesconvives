@@ -36,7 +36,6 @@ class RestaurantsController < ApplicationController
       url = "https://maps.googleapis.com/maps/api/directions/json?&origin=#{participant.address.latitude.to_f},#{participant.address.longitude.to_f}&destination=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&key=AIzaSyAHPB_XgGpd8N7bomLX-AxRKXatr1PSIF4"
       directions_serialized = open(url).read
       directions = JSON.parse(directions_serialized)
-      raise
     end
   end
 
