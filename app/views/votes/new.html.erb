@@ -1,0 +1,7 @@
+<div class="container">
+  <%= form_for[@selected_restaurant, @vote] do |f| %>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+    <%= f.submit %>
+  <% end %>
+</div>
