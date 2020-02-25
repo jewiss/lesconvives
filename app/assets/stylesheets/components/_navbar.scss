@@ -1,6 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: transparent;
+  color: white
+}
+
+.navbar-lewagon .fa-compass {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .navbar-lewagon .navbar-collapse {
