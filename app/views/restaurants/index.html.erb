@@ -1,1 +1,13 @@
+<div class="container">
+
+  <% @results_restaurants.each do |result|%>
+  <p> <%= result.name %> </p>
+  <p> <%= result.price_level%></p>
+  <p> <%= result.rating%></p>
+  <p> <%= result.address%></p>
+  <%# url = "https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyAHPB_XgGpd8N7bomLX-AxRKXatr1PSIF4&photoreference=#{result["photos"][0]["photo_reference"]}&maxwidth=400" %>
+  <!-- <img src="<%#= url %>" alt=""> -->
+  <% end %>
+
+ </div>
 
