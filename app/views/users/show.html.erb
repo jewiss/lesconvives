@@ -4,3 +4,6 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 <%= @user.email %>
+<% if current_user.profile_picture.attached? %>
+<%= cl_image_tag current_user.profile_picture.key, height: 300, width: 400, crop: :fill %>
+<% end %>
