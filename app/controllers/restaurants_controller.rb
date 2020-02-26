@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
 
   private
 
- def parse_google_api(lat, lng)
+  def parse_google_api(lat, lng)
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=1000&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
     restaurants_serialized = open(url).read
     restaurants = JSON.parse(restaurants_serialized)["results"]
@@ -35,12 +35,9 @@ class RestaurantsController < ApplicationController
       resto.photo_url = res['location']
       resto.save!
       resto
-
     end
-
     return final_restaurants
   end
-
 
   def geographic_center
     retrive_participants_geo_positions
