@@ -1,6 +1,5 @@
 require 'json'
 require 'open-uri'
-# api_key='AIzaSyAHPB_XgGpd8N7bomLX-AxRKXatr1PSIF4'
 
 class RestaurantsController < ApplicationController
 
@@ -43,7 +42,7 @@ class RestaurantsController < ApplicationController
   # def directions_to_geographic_center_directions_api
   #   @participants = Participant.all
   #   @participants.each do |participant|
-  #     url = "https://maps.googleapis.com/maps/api/directions/json?&origin=#{participant.address.latitude.to_f},#{participant.address.longitude.to_f}&destination=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&key=AIzaSyAHPB_XgGpd8N7bomLX-AxRKXatr1PSIF4"
+  #     url = "https://maps.googleapis.com/maps/api/directions/json?&origin=#{participant.address.latitude.to_f},#{participant.address.longitude.to_f}&destination=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
   #     directions_serialized = open(url).read
   #     directions = JSON.parse(directions_serialized)
   #   end
@@ -53,7 +52,7 @@ class RestaurantsController < ApplicationController
     @participants = Participant.all
     directions = {}
     @participants.each do |participant|
-      url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{participant.address.latitude},#{participant.address.longitude}&destinations=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&units=metric&key=AIzaSyAHPB_XgGpd8N7bomLX-AxRKXatr1PSIF4"
+      url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{participant.address.latitude},#{participant.address.longitude}&destinations=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&units=metric&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
       directions_serialized = open(url).read
       parsed_directions = JSON.parse(directions_serialized)
       transit_duration = parsed_directions['rows'].first['elements'].first['duration']['text']
