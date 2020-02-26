@@ -34,6 +34,16 @@
   width: 250px;
 }
 
+.fb-login-button {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #4267B1;
+  transition: background 0.3s ease;
+  width: 250px;
+  margin-top: 10px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
