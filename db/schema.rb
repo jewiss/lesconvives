@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_145448) do
+ActiveRecord::Schema.define(version: 2020_02_26_153523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_145448) do
     t.string "google_api_id"
     t.float "latitude"
     t.float "longitude"
-    t.string "photo_url"
+    t.string "place_id_google"
   end
 
   create_table "selected_restaurants", force: :cascade do |t|
