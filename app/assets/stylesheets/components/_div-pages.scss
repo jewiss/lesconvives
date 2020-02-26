@@ -1,0 +1,22 @@
+.top-div {
+  font-size: 13px;
+  background-color: $yellow;
+  height: 40vh;
+  & img {
+    border-radius: 24px;
+  }
+}
+
+.top-div p {
+  margin-top: 8px;
+}
+
+.bottom-div {
+  position: relative;
+}
+
+#search_query {
+  border-radius: 16px;
+  border: none;
+  margin-right: 8px;
+}
