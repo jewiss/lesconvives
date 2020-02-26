@@ -26,6 +26,8 @@ class RestaurantsController < ApplicationController
         resto.rating = restaurant["rating"]
         resto.address = restaurant["vicinity"]
         resto.google_api_id = restaurant["id"]
+        file = URI.open("https://maps.googleapis.com/maps/api/place/photo?key=AIzaSyAHPB_XgGpd8N7bomLX-AxRKXatr1PSIF4&photoreference=#{restaurant["photos"][0]["photo_reference"]}&maxwidth=400")
+        resto.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
       end
     end
 
