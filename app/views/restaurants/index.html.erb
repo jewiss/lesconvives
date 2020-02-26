@@ -1,1 +1,26 @@
+
+<div class="container">
+
+  <% @results_restaurants.each do |result|%>
+    <p> <%= result.name %> </p>
+    <p> <%= result.price_level%></p>
+    <p> <%= result.rating%></p>
+    <p> <%= result.address%></p>
+    <% if result.photo_url %>
+      <%= image_tag result.photo_url , alt: "alttext" %>
+    <% end %>
+  <% end %>
+
+</div>
+
+
 <h2> Directions </h2>
+
+<ul>
+<% @directions.each do |direction| %>
+  <li>Name:<%= direction.first.user.first_name %></li>
+  <li>Time to meeting point:<%= direction.last[:transit_duration] %></li>
+  <li>Distance to meeting point:<%= direction.last[:transit_distance] %></li>
+<% end %>
+  <li>Meeting Point: <%= @geographic_center %></li>
+</ul>
