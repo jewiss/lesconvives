@@ -5,15 +5,17 @@
     <p> <%= result.price_level%></p>
     <p> <%= result.rating%></p>
     <p> <%= result.address%></p>
-    <% if result.photo_url %>
-      <%= image_tag result.photo_url , alt: "alttext" %>
+    <% if result.photo.attached? %>
+      <%= cl_image_tag result.photo.key , alt: "alttext" %>
     <% end %>
+
   <% end %>
 
 </div>
 
 <div class="container">
 
+<!--
 <h2> Directions </h2>
 
 <ul>
@@ -26,7 +28,6 @@
 </ul>
 
 </div>
-
 
 <div>
   <div id="map" data-markers="<%= @markers.to_json %>"></div>

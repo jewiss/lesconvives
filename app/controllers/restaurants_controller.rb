@@ -33,8 +33,8 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def parse_google_api(lat, lng)
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=1000&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
+ def parse_google_api(lat, lng)
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{lng}&radius=200&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
     restaurants_serialized = open(url).read
     restaurants = JSON.parse(restaurants_serialized)["results"]
     final_restaurants = restaurants.map do |restaurant|
@@ -46,8 +46,11 @@ class RestaurantsController < ApplicationController
         r.google_api_id = restaurant["id"]
 
       end
-      res = Net::HTTP.get_response(URI("https://maps.googleapis.com/maps/api/place/photo?key=#{ENV["GOOGLE_MAPS_TOKEN"]}&photoreference=#{restaurant["photos"][0]["photo_reference"]}&maxwidth=400"))
-      resto.photo_url = res['location']
+      if restaurant["photos"] && !resto.photo.attached?
+        res = Net::HTTP.get_response(URI("https://maps.googleapis.com/maps/api/place/photo?key=#{ENV["GOOGLE_MAPS_TOKEN"]}&photoreference=#{restaurant["photos"][0]["photo_reference"]}&maxwidth=400"))
+        file = URI.open(res['location'])
+        resto.photo.attach(io: file, filename: "#{restaurant["id"]}.jpg", content_type: 'image/jpg')
+      end
       resto.save!
       resto
     end
@@ -103,6 +106,5 @@ class RestaurantsController < ApplicationController
     end
     return directions
   end
-
 end
 
