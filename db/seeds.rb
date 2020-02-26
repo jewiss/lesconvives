@@ -31,7 +31,7 @@ lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 7
 dinner1 = Event.create!(date: Date.today, name: 'Diner des familles')
 
 # Participants
-romain1 = Participant.create!(event_id: dinner1.id, user_id: romain.id, owner: true, address_id: romain_home.id)
+romain1 = Participant.create!(event_id: dinner1.id, user_id: romain.id, owner: true, address_id: romain_work.id)
 lucien1 = Participant.create!(event_id: dinner1.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
 
 
