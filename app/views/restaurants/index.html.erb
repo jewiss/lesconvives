@@ -1,4 +1,3 @@
-
 <div class="container">
 
   <% @results_restaurants.each do |result|%>
@@ -13,6 +12,7 @@
 
 </div>
 
+<div class="container">
 
 <h2> Directions </h2>
 
@@ -24,3 +24,10 @@
 <% end %>
   <li>Meeting Point: <%= @geographic_center %></li>
 </ul>
+
+</div>
+
+
+<div>
+  <div id="map" data-markers="<%= @markers.to_json %>"></div>
+</div>
