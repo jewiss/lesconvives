@@ -1,9 +1,23 @@
 
+<div class="container">
+  <div class="row">
+    <% if current_user.profile_picture.attached? %>
+      <%= cl_image_tag current_user.profile_picture.key, height: 150, width: 200, crop: :fill %>
+    <% elsif @facebook_photo %>
+      <%= image_tag @facebook_photo, alt: "Picture of #{@user.first_name}", width: 200 %>
+    <% else %>
+    <%= "coucou" %>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= "Welcome #{@user.first_name}" %>
+  </div>
+</div>
 
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <%= link_to "Create a new event", new_event_path %>
+</div>
 
-<%= @user.email %>
-<% if current_user.profile_picture.attached? %>
-<%= cl_image_tag current_user.profile_picture.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+
+
+
