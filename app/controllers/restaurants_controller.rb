@@ -4,11 +4,27 @@ require 'open-uri'
 class RestaurantsController < ApplicationController
 
   def index
-    lng = 2.379717
-    lat = 48.865433
-    @results_restaurants = parse_google_api(lat, lng)
-    # @geographic_center = geo_center_to_address(geographic_center)
-    # @directions = directions_to_geographic_center_distance_matrix_api
+    # @restaurants = Restaurant.all
+    @geographic_center = geo_center_to_address(geographic_center)
+    @directions = directions_to_geographic_center_distance_matrix_api
+    @lat = geographic_center[0]
+    @lng = geographic_center[1]
+    @results_restaurants = parse_google_api(@lat, @lng)
+    @markers = @results_restaurants.select {|r| r.latitude.present? && r.longitude.present?}.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude
+        # icon: ActionController::Base.helpers.asset_url('restaurant.png')
+      }
+    end
+    @markers = @markers << { lat: @lat, lng: @lng, icon: ActionController::Base.helpers.asset_url('center.png')}
+
+    @participants.each do |participant|
+      coordinates = []
+      coordinates << participant.address.latitude.to_f
+      coordinates << participant.address.longitude.to_f
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: ActionController::Base.helpers.asset_url('avatar.png')}
+    end
   end
 
   def show
@@ -37,36 +53,32 @@ class RestaurantsController < ApplicationController
       end
       resto.save!
       resto
-
     end
-
     return final_restaurants
   end
 
-
   def geographic_center
     # retrive_participants_geo_positions
-    geo_positions = []
+    @geo_positions = []
     @participants = Participant.all
     @participants.each do |participant|
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
-      geo_positions << coordinates
+      @geo_positions << coordinates
     end
     # find_geographic_center
-    geographic_center = Geocoder::Calculations.geographic_center(geo_positions)
+    geographic_center = Geocoder::Calculations.geographic_center(@geo_positions)
   end
 
-  # def geo_center_to_address(geo_center)
-  #   geo_center = geographic_center
-  #   results = Geocoder.search([geo_center[0], geo_center[1]])
-  #   if results
-  #     full_address = results.first.data['address']
-  #     shortened_address = "#{full_address['address29']}, #{full_address['road']}, #{full_address['postcode']}, #{full_address['city']}"
-  #   end
-  #   return shortened_address
-  # end
+  def geo_center_to_address(geo_center)
+    results = Geocoder.search([geo_center[0], geo_center[1]])
+    if results
+      @full_address = results.first.data['address']
+      shortened_address = "#{@full_address['address29']}, #{@full_address['road']}, #{@full_address['postcode']}, #{@full_address['city']}"
+    end
+    return shortened_address
+  end
 
   # def directions_to_geographic_center_directions_api
   #   @participants = Participant.all
@@ -94,6 +106,5 @@ class RestaurantsController < ApplicationController
     end
     return directions
   end
-
 end
 
