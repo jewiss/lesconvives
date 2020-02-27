@@ -10,18 +10,32 @@
 <div><p>Meeting Point: <%= @geographic_center %></p></div>
 
 <div class="container">
-
-  <% @results_restaurants.each do |result|%>
-    <p> <%= result.name %> </p>
-    <p> <%= result.price_level%></p>
-    <p> <%= result.rating%></p>
-    <p> <%= result.address%></p>
-    <% if result.photo.attached? %>
-      <%= cl_image_tag result.photo.key , alt: "alttext" %>
+  <div>
+    <% @results_restaurants.each do |result|%>
+      <div class="card-trip mb-3">
+        <% if result.photo.attached? %>
+            <%= cl_image_tag result.photo.key , alt: "photo restaurant" %>
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <p> <%= result.name %> </p>
+            <% if result.rating %>
+              <p>
+                <% result.rating.times do%>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - result.rating).times do %>
+                  <i class="fas fa-star" id="level-missing"></i>
+                <% end %>
+              </p>
+            <% end %>
+            <p> <%= result.short_address %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= ("€"*result.price_level.to_i) %></h2>
+        </div>
+      </div>
     <% end %>
-
-  <% end %>
-
+  </div>
 </div>
 
 
@@ -54,13 +68,15 @@
           <%= select_tag :food_category,
             options_for_select(Restaurant::CATEGORY),
             include_blank: true,
-            class: "form-control",
-            placeholder: "Find a restaurant"
+            class: "form-control"
           %>
-           <%= number_field_tag :rating,
-            in: 1..5,
-            class: "form-control",
-            placeholder: "Find a restaurant"
+          <%= select_tag :rating,
+            options_for_select(Restaurant::RATINGS),
+            class: "form-control"
+          %>
+          <%= select_tag :price_level,
+            options_for_select(Restaurant::PRICE_LEVEL),
+            class: "form-control"
           %>
         </div>
         <div class="modal-footer">
