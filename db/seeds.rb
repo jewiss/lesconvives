@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'open-uri'
 
 # Restaurant.where(name: 'Le Valois').destroy
@@ -51,6 +52,7 @@ puts "7 users created"
 # tokugawa = Restaurant.create!(name: 'Tokugawa', price_level: '2', rating: '4.2', food_category: 'Japanese', address: '49 Boulevard du Montparnasse, 75006 Paris, France', phone: '01 42 22 32 59', url: 'tokugawa.fr')
 # losamigos = Restaurant.create!(name: 'Los Amigos', price_level: '3', rating: '4.5', food_category: 'Mexican', address: "23 Rue d'Enghien, 75010 Paris, France", phone: '01 45 89 80 21', url: 'losamigos.fr')
 
+
 # puts "-------"
 # puts '4 seeds restaurants created'
 
@@ -59,21 +61,22 @@ romain_home = Address.create!(name: 'Home', full_address: '74 rue mazarine, 7500
 romain_work = Address.create!(name: 'Work', full_address: '2 bis Avenue Foch, 75116 Paris, France', user_id: romain.id)
 lucien_home = Address.create!(name: 'Home', full_address: '14 Rue Crespin du Gast, 75011 Paris, France', user_id: lucien.id)
 lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 75001 Paris, France', user_id: lucien.id)
+
 sandra_work = Address.create!(name: 'Home', full_address: '3 rue oberkampf, 75011, Paris, France', user_id: sandra.id)
 eniko_work = Address.create!(name: 'Home', full_address: '37 Quai Branly, 75007 Paris, France', user_id: eniko.id)
 antoine_work = Address.create!(name: 'Home', full_address: '2 rue de la contamine, 75017, Paris, France', user_id: antoine.id)
 germain_work = Address.create!(name: 'Home', full_address: '3 rue des acacias, 75017, Paris, France', user_id: germain.id)
 thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin, 75013, Paris, France', user_id: thanh.id)
 
-puts 'adresses created'
+puts 'addresses created'
 
 # Events
 dinner1 = Event.create!(date: Date.today, name: 'Diner des familles')
-
+puts "dinner created"
 # Participants
 romain1 = Participant.create!(event_id: dinner1.id, user_id: romain.id, owner: true, address_id: romain_work.id)
 lucien1 = Participant.create!(event_id: dinner1.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
-
+puts "participant created"
 
 puts 'Event "Diner des familles" created'
 puts '-------'
