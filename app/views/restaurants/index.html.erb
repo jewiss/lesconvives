@@ -13,9 +13,18 @@
 
 </div>
 
+<%= form_tag restaurants_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a restaurant"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <div class="container">
 
-<!--
+
 <h2> Directions </h2>
 
 <ul>
