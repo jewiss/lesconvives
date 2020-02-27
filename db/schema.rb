@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_104631) do
     t.float "longitude"
     t.string "place_id_google"
     t.string "google_api_id"
-
   end
 
   create_table "selected_restaurants", force: :cascade do |t|
