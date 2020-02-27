@@ -27,14 +27,18 @@
       </div>
     </div>
 
-    <div class="container pt-4">
+    <div class="friend-cards pt-6">
       <% @users.each do |user| %>
-      <div class="card">
-        <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
-      <%= user.first_name %>
-      </div>
+        <div class="card-avatar-add">
+          <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+          <p class="avatar-name">
+            <%= user.first_name %>
+          </p>
+          <%= link_to event_participants_path(user: user.id, participant: @participant), method: :post, class: "add-button" do %>
+            <i class="fas fa-plus-circle"> </i>
+          <% end %>
+
+        </div>
       <% end %>
-
     </div>
-
   </div>
