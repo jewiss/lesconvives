@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color: transparent;
-  color: white
+  color: white;
 }
 
 .navbar-lewagon .fa-compass {
@@ -14,4 +14,12 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.fa-home {
+  color: rgba(0,0,0,0.6);
 }
