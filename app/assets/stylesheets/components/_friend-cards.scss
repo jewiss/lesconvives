@@ -23,11 +23,21 @@
 
 .add-button .fa-plus-circle {
   color: $green;
-}
-
-.add-button {
+  font-size: 20px;
   position: relative;
   top: -39px;
-  left: 17px;
+  left: 20px;
+}
+
+.add-button .fa-minus-circle {
+  color: $blue;
+  font-size: 20px;
+  position: relative;
+  top: -39px;
+  left: 28px;
+}
+
+.btn-create {
+
 }
 
