@@ -1,3 +1,5 @@
+
+<div class="container-new">
 <div class="img" style="background-image: url(https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
       <div class="sign-in">
         <h2 style="color:white; font-weight:bolder">Les Convives</h2>
@@ -15,7 +17,7 @@
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Log in", class: "btn btn-success btn-lg" %>
+            <%= f.button :submit, "Log in", class: "btn-lesconvives" %>
           </div>
           <p><%= link_to "Sign up", new_registration_path(resource_name), class: "sign" %></p>
 
