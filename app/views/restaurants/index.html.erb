@@ -1,20 +1,12 @@
-<div class="container">
-  <h2> Directions </h2>
-
-  <ul>
-  <% @directions.each do |direction| %>
-    <li>Name: <%= direction.first.user.first_name %></li>
-    <li>Time to meeting point: <%= direction.last[:transit_duration] %></li>
-    <li>Distance to meeting point: <%= direction.last[:transit_distance] %></li>
-  <% end %>
-    <li>Meeting Point: <%= @geographic_center %></li>
-  </ul>
-
+<div>
+<p>BLANK TEXT - PLACEHOLDER FOR MINI NAVBAR</p>
 </div>
 
 <div>
   <div id="map" data-markers="<%= @markers.to_json %>"></div>
 </div>
+
+<div><p>Meeting Point: <%= @geographic_center %></p></div>
 
 <div class="container">
 
