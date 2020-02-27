@@ -5,4 +5,5 @@ class Restaurant < ApplicationRecord
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, :reverse_geocode, if: :will_save_change_to_address?
+  CATEGORY = ["indian"]
 end

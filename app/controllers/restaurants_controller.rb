@@ -4,16 +4,22 @@ require 'open-uri'
 class RestaurantsController < ApplicationController
 
   def index
-    if params[:query].present?
-      food_category = params[:query]
+    if params[:food_category].present?
+      food_category = params[:food_category]
     else
-      food_category =""
+      food_category = ""
     end
     @geographic_center = geo_center_to_address(geographic_center)
     @directions = directions_to_geographic_center_distance_matrix_api
     @lat = geographic_center[0]
     @lng = geographic_center[1]
-    @results_restaurants = parse_google_api(@lat, @lng, food_category)
+
+# si pas de params ou si params food category
+    if (params[:food_category].nil? && params[:rating].nil?) || params[:food_category].present?
+      @results_restaurants = parse_google_api(@lat, @lng, food_category)
+    else
+      @results_restaurants = Restaurant.near(geographic_center).first(10)
+    end
     @details_restaurants = parse_restaurant_details_api
     @markers = @results_restaurants.select {|r| r.latitude.present? && r.longitude.present?}.map do |restaurant|
       {
