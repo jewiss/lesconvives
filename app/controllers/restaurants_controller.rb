@@ -36,17 +36,20 @@ class RestaurantsController < ApplicationController
     @markers = @results_restaurants.select {|r| r.latitude.present? && r.longitude.present?}.map do |restaurant|
       {
         lat: restaurant.latitude,
-        lng: restaurant.longitude
+        lng: restaurant.longitude,
         # icon: ActionController::Base.helpers.asset_url('restaurant.png')
+        infoWindow: { content: render_to_string(partial: "/restaurants/infowindow", locals: { restaurant: restaurant }) }
       }
     end
-    @markers = @markers << { lat: @lat, lng: @lng, icon: ActionController::Base.helpers.asset_url('center.png')}
+# markers for geocenter
+    @markers = @markers << { lat: @lat, lng: @lng, icon: ActionController::Base.helpers.asset_url('center.png'), infoWindow: { content: render_to_string(partial: "/restaurants/infowindowcenter", locals: { center: @shortened_address }) } }
 
+# markers for each participant
     @participants.each do |participant|
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
-      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: ActionController::Base.helpers.asset_url('avatar.png')}
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: ActionController::Base.helpers.asset_url('avatar.png'), infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
     end
   end
 
@@ -121,9 +124,14 @@ class RestaurantsController < ApplicationController
     results = Geocoder.search([geo_center[0], geo_center[1]])
     if results
       @full_address = results.first.data['address']
-      shortened_address = "#{@full_address['address29']}, #{@full_address['road']}, #{@full_address['postcode']}, #{@full_address['city']}"
+      if @full_address['road'].nil?
+        road = @full_address['way']
+      else
+        road = @full_address['road']
+      end
+      @shortened_address = "#{road}, #{@full_address['postcode']}, #{@full_address['city']}"
     end
-    return shortened_address
+    return @shortened_address
   end
 
   # def directions_to_geographic_center_directions_api
