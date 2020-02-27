@@ -21,7 +21,13 @@
   <div class="friend-cards pt-6">
     <% @users.each do |user| %>
       <div class="card-avatar-add">
-        <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+        <% if user.profile_picture.attached? %>
+          <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+        <% elsif user.facebook_picture_url %>
+          <%= image_tag user.facebook_picture_url, class: "avatar" %>
+        <% else %>
+          <i class="card-no-avatar far fa-user"></i>
+        <% end %>
         <p class="avatar-name">
           <%= user.first_name %>
         </p>
@@ -33,3 +39,4 @@
   </div>
 
 </div>
+
