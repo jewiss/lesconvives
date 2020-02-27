@@ -31,8 +31,14 @@
         <p class="avatar-name">
           <%= user.first_name %>
         </p>
-        <%= link_to event_participants_path(user: user.id, participant: @participant), method: :post, remote: true, class: "add-button" do %>
-          <i class="fas fa-plus-circle"> </i>
+        <% if Participant.find_by(user: user, event: @event)%>
+          <%= link_to event_participants_path(user: user.id), method: :delete, remote: true, class: "add-button" do %>
+            <i class="fas fa-minus-circle btn-create"></i>
+          <% end %>
+        <% else  %>
+          <%= link_to event_participants_path(user: user.id), method: :post, remote: true, class: "add-button" do %>
+            <i class="fas fa-plus-circle btn-create"> </i>
+          <% end %>
         <% end %>
       </div>
     <% end %>

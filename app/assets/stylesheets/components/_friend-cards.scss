@@ -18,12 +18,16 @@
 .avatar-name {
   font-size: 12px;
   opacity: 0.7;
+  margin-bottom: 0px;
 }
 
 .add-button .fa-plus-circle {
-  position: relative;
-  top: -53px;
-  left: 17px;
   color: $green;
+}
+
+.add-button {
+  position: relative;
+  top: -39px;
+  left: 17px;
 }
 
