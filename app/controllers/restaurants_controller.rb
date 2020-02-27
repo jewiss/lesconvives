@@ -15,12 +15,24 @@ class RestaurantsController < ApplicationController
     @lng = geographic_center[1]
 
 # si pas de params ou si params food category
-    if (params[:food_category].nil? && params[:rating].nil?) || params[:food_category].present?
+    if params[:food_category].present? || Restaurant.near(geographic_center).empty?
       @results_restaurants = parse_google_api(@lat, @lng, food_category)
+      @details_restaurants = parse_restaurant_details_api
+      if params[:rating].present?
+        @results_restaurants = @results_restaurants.select {|r| r.rating == params[:rating].to_i}
+      end
+      if params[:price_level].present?
+        @results_restaurants = @results_restaurants.select {|r| r.price_level == params[:price_level].to_i}
+      end
     else
-      @results_restaurants = Restaurant.near(geographic_center).first(10)
+      @results_restaurants = Restaurant.near(geographic_center).limit(10)
+      if params[:rating].present?
+        @results_restaurants = @results_restaurants.where(rating: params[:rating])
+      end
+      if params[:price_level].present?
+        @results_restaurants = @results_restaurants.where(price_level: params[:price_level])
+      end
     end
-    @details_restaurants = parse_restaurant_details_api
     @markers = @results_restaurants.select {|r| r.latitude.present? && r.longitude.present?}.map do |restaurant|
       {
         lat: restaurant.latitude,
@@ -45,7 +57,7 @@ class RestaurantsController < ApplicationController
   private
 
   def parse_google_api(lat, lng, food_category)
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=#{food_category}&location=#{lat},#{lng}&radius=200&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=#{food_category}&location=#{lat},#{lng}&radius=100&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
     restaurants_serialized = open(url).read
     restaurants = JSON.parse(restaurants_serialized)["results"]
     final_restaurants = restaurants.map do |restaurant|
@@ -54,6 +66,7 @@ class RestaurantsController < ApplicationController
         r.price_level = restaurant["price_level"]
         r.rating = restaurant["rating"]
         r.address = restaurant["vicinity"]
+        r.short_address = restaurant["vicinity"]
         r.google_api_id = restaurant["id"]
         r.place_id_google = restaurant["place_id"]
       end
@@ -131,7 +144,6 @@ class RestaurantsController < ApplicationController
       parsed_directions = JSON.parse(directions_serialized)
       transit_duration = parsed_directions['rows'].first['elements'].first['duration']['text']
       transit_distance = parsed_directions['rows'].first['elements'].first['distance']['text']
-      # raise
       directions[participant] = {
         transit_duration: transit_duration,
         transit_distance: transit_distance
