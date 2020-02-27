@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 2020_02_26_153523) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "google_api_id"
     t.float "latitude"
     t.float "longitude"
-    t.string "google_api_id"
     t.string "place_id_google"
   end
 

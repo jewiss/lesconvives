@@ -4,7 +4,11 @@ require 'open-uri'
 class RestaurantsController < ApplicationController
 
   def index
-    food_category =""
+    if params[:query].present?
+      food_category = params[:query]
+    else
+      food_category =""
+    end
     @geographic_center = geo_center_to_address(geographic_center)
     @directions = directions_to_geographic_center_distance_matrix_api
     @lat = geographic_center[0]
