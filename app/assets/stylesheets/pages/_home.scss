@@ -11,19 +11,18 @@
 .banner h1 {
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 56px;
+  font-size: 42px;
   font-weight: bold;
   text-align: center;
-  margin-top: 24px;
 }
 
 .banner p {
-  font-size: 32px;
+  font-size: 24px;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 80px;
 }
 
 .btn-fb {
@@ -35,7 +34,9 @@
   font-size: 16px;
   font-weight: bold;
   border: none;
-  margin-top: 88px;
+  margin-top: 92px;
+  width: 160px;
+  text-align: center;
 }
 
 .btn-fb:hover {
@@ -44,30 +45,31 @@
   background: #2069D9;
 }
 
-.btn-success {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #1EDD88;
+.btn-lesconvives {
+  padding: 8px 16px;
+  border-radius: 16px;	
   transition: background 0.3s ease;
-  margin-top: 10px;
-  width: 420px;
-  font-size: 36px;
+  font-size: 16px;
   font-weight: bold;
+  border: none;
+  margin-bottom: 120px;
+  width: 160px;
+  text-align: center;
 }
 
-.btn-success:hover {
-	background: #1BCB7F;
- 	opacity: 1;
-  }
-
-
-.container {
+.container-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 240px;
+  margin-bottom: 24px;
+  padding: 24px;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
