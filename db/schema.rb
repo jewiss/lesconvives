@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_02_26_104631) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,8 +81,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_104631) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "place_id_google"
     t.string "google_api_id"
-    t.string "photo_url"
   end
 
   create_table "selected_restaurants", force: :cascade do |t|

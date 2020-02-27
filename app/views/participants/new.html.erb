@@ -1,4 +1,33 @@
-Participants page
+<div class="top-div d-flex justify-content-center">
+  <p>
+    <%= @event.name %>
+    <%= @event.date %>
+  </p>
 
-<%= @event.name %>
-<%= @event.date %>
+</div>
+
+  <div class="bottom-div">
+    <div class="btn-middle">
+      <%= form_tag new_event_participant_path(@event), method: :get do %>
+      <div class="d-flex justify-content-center align-items-center">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            id:"search_query",
+          placeholder: "Search for a friend"
+        %>
+      <% end %>
+
+          <%= link_to "Go!", restaurants_path, class: "btn-lesconvives" %>
+
+      </div>
+    </div>
+
+    <div class="container pt-4">
+      <% @users.each do |user| %>
+      <%= user.first_name %>
+      <% end %>
+
+    </div>
+
+  </div>
