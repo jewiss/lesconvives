@@ -1,1 +1,24 @@
 
+.btn {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+.img {
+ background-size: cover;
+ background-position: center;
+ padding: 150px 0;
+ height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.sign-in {
+  background: white;
+  padding: 50px;
+  margin-top: 50px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  width: 480px;
+}
