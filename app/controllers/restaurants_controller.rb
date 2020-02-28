@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
       end
     else
 
-      @results_restaurants = Restaurant.near(geographic_center, 0.1).limit(10)
+      @results_restaurants = Restaurant.near(geographic_center, 0.1).limit(20)
       if params[:rating].present?
         @results_restaurants = @results_restaurants.where(rating: params[:rating])
       end
@@ -50,7 +50,12 @@ class RestaurantsController < ApplicationController
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
-      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: ActionController::Base.helpers.asset_url('avatar.png'), infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
+      if participant.user.profile_picture.attached?
+        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+      else
+        icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+      end
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon, infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
     end
   end
 
@@ -61,7 +66,7 @@ class RestaurantsController < ApplicationController
   private
 
   def parse_google_api(lat, lng, food_category)
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=#{food_category}&location=#{lat},#{lng}&radius=200&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=#{food_category}&location=#{lat},#{lng}&radius=100&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
     restaurants_serialized = open(url).read
     restaurants = JSON.parse(restaurants_serialized)["results"]
     final_restaurants = restaurants.map do |restaurant|

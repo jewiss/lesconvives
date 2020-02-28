@@ -24,7 +24,8 @@ import "bootstrap";
 import { initMap } from '../components/init_map.js';
 import { changeAvatarWhenParticipant } from '../components/create_participant.js';
 
-initMap();
-changeAvatarWhenParticipant();
 
-
+document.addEventListener('turbolinks:load', () => {
+  initMap();
+  changeAvatarWhenParticipant();
+});
