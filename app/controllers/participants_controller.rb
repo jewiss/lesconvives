@@ -39,5 +39,4 @@ class ParticipantsController < ApplicationController
     redirect_to new_event_participant_path(@event)
   end
 
-
 end
