@@ -67,7 +67,7 @@ lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 7
 
 sandra_work = Address.create!(name: 'Home', full_address: '3 rue oberkampf, 75011, Paris, France', user_id: sandra.id)
 eniko_work = Address.create!(name: 'Home', full_address: '37 Quai Branly, 75007 Paris, France', user_id: eniko.id)
-antoine_work = Address.create!(name: 'Home', full_address: '2 rue de la contamine, 75017, Paris, France', user_id: antoine.id)
+antoine_work = Address.create!(name: 'Home', full_address: '171 Rue de la Croix Nivert, 75015 Paris, France', user_id: antoine.id)
 germain_work = Address.create!(name: 'Home', full_address: '3 rue des acacias, 75017, Paris, France', user_id: germain.id)
 thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin, 75013, Paris, France', user_id: thanh.id)
 
@@ -76,13 +76,15 @@ puts 'addresses created'
 # Events
 after_gaudelet = Event.create!(date: Date.new(2020,1,24), hour: Time.new(19.00), name: 'Afterwork Gaudelet')
 SelectedRestaurant.create(restaurant: losamigos, event: after_gaudelet)
+
 lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
 lewagon_karaoke = Event.create!(date: Date.parse('2020-02-13'), name: 'Karaoke Le Wagon')
 dinner_family = Event.create!(date: Date.parse('2020-02-22'), name: 'Family Dinner')
 demo_day = Event.create!(date: Date.parse('2020-03-06'), name: 'Demo Day Gaudelet')
 tinder_date = Event.create!(date: Date.parse('2020-03-08'), name: 'Tinder Date')
 
-puts "dinner created"
+puts "events created"
+
 # Participants
 romain1 = Participant.create!(event_id: after_gaudelet.id, user_id: romain.id, owner: true, address_id: romain_work.id)
 lucien1 = Participant.create!(event_id: after_gaudelet.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
