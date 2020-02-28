@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-lg-6">
+    	<div class="img" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url();">
+
+
+<!-- card description -->            
+        <div class="description-container">
+            <div class="card-details d-flex bd-highlight" >
+
+	            <div class="bd-highlight">
+	              <ul class="list-group list-group-flush">
+		            <li class="list-group-item">
+		              <i class="fas fa-utensils"></i>
+		            </li>
+		            <li class="list-group-item">
+		              <i class="fas fa-euro-sign"></i>
+		            </li>
+		            <li class="list-group-item">
+		              <i class="fas fa-star"></i>
+		            </li>
+		            <li class="list-group-item">
+		              <i class="fas fa-utensils"></i>
+		            </li>
+		            <li class="list-group-item">
+		              <i class="fas fa-phone"></i>
+		            </li>
+		          </ul>
+	            </div>
+
+		        <div class="flex-grow-1 bd-highlight">
+		          <ul class="list-group list-group-flush">
+		            <li class="list-group-item">
+		              <%= @restaurant.name %>
+		            </li>
+		            <li class="list-group-item">
+		              <%= @restaurant.price_level %> campers
+		            </li>
+		            <li class="list-group-item">
+		              <%= @restaurant.rating %>
+		            </li>
+		            <li class="list-group-item">
+		              <%= @restaurant.food_category %>
+		            </li>
+		            <li class="list-group-item">
+		              <%= @restaurant.phone %>
+		            </li>
+		          </ul>
+		        </div>
+	        </div> 
+        </div>
+
+    </div>
+  </div>
+</div    	
