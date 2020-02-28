@@ -4,18 +4,8 @@
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <% if user_signed_in? %>
-      <% if current_user.profile_picture.attached? %>
-        <%= cl_image_tag current_user.profile_picture.key, class: "avatar dropdown-toggle", data: { toggle: "dropdown" }, id: "navbarDropdown", 'aria-haspopup': true, 'aria-expanded': false %>
-      <% else %>
-        <% avatar_url = current_user.facebook_picture_url%>
-        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% end %>
-    <% else %>
-      <span class="navbar-toggler-icon"></span>
-    <% end %>
+    <span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
