@@ -16,7 +16,6 @@ class RestaurantsController < ApplicationController
 
 # si pas de params ou si params food category
     if params[:food_category].present? || Restaurant.near(geographic_center, 0.1).empty?
-      raise
       @results_restaurants = parse_google_api(@lat, @lng, food_category)
       @details_restaurants = parse_restaurant_details_api
       if params[:rating].present?

@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: %i[show new create] do
-    resources :participants, only: %i[new create destroy]
+    resources :participants, only: %i[new create]
     resources :selected_restaurants, only: %i[show new create]
     resources :votes, only: %i[new create]
   end
-
+  resources :participants, only: %i[destroy]
   resources :restaurants, only: %i[index show new create]
 end

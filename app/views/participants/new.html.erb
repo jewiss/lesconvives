@@ -31,12 +31,13 @@
         <p class="avatar-name">
           <%= user.first_name %>
         </p>
-        <% if Participant.find_by(user: user, event: @event)%>
-          <%= link_to event_participants_path(user: user.id), method: :delete, class: "add-button" do %>
+        <% participant = Participant.find_by(user: user, event: @event) %>
+        <% if participant %>
+          <%= link_to participant_path(participant), method: :delete, class: "add-button" do %>
             <i class="fas fa-minus-circle btn-create"></i>
           <% end %>
         <% else  %>
-          <%= link_to event_participants_path(user: user.id), method: :post, class: "add-button" do %>
+          <%= link_to event_participants_path(@event, user: user.id), method: :post, class: "add-button" do %>
             <i class="fas fa-plus-circle btn-create"> </i>
           <% end %>
         <% end %>

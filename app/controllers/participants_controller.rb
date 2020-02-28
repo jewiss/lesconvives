@@ -5,7 +5,7 @@ class ParticipantsController < ApplicationController
     @markers = []
     @event.participants.each do |participant|
       if participant.user.profile_picture.attached?
-        icon = { url: participant.user.profile_picture.key, scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
       else
         icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50} }
       end
@@ -33,9 +33,10 @@ class ParticipantsController < ApplicationController
   end
 
   def destroy
-    @participant = Participant.find_by(user_id: params[:user])
-    raise
+    @participant = Participant.find(params[:id])
+    @event = @participant.event
     @participant.destroy
+    redirect_to new_event_participant_path(@event)
   end
 
 
