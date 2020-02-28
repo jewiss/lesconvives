@@ -71,9 +71,9 @@ thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin
 puts 'addresses created'
 
 # Events
-after_gaudelet = Event.create! (Date.parse('2020-01-24'), name: 'Afterwork Gaudelet')
-lunch_dance = Event.create! (Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
-lewagon_karaoke = Event.create! (Date.parse('2020-02-13'), name: 'Karaoke Le Wagon') 
+after_gaudelet = Event.create!(Date.parse('2020-01-24'), name: 'Afterwork Gaudelet')
+lunch_dance = Event.create!(Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
+lewagon_karaoke = Event.create(Date.parse('2020-02-13'), name: 'Karaoke Le Wagon')
 dinner_family = Event.create!(Date.parse('2020-02-22'), name: 'Family Dinner')
 demo_day = Event.create!(Date.parse('2020-03-06'), name: 'Demo Day Gaudelet')
 tinder_date = Event.create!(Date.parse('2020-03-08'), name: 'Tinder Date')
