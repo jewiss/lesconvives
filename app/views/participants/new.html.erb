@@ -1,3 +1,5 @@
+<br>
+<br>
 <div class="top-div d-flex justify-content-center">
   <div id="map" data-markers="<%= @markers.to_json %>" style="width: 100%;
     height: 40vh;"></div>
@@ -14,7 +16,7 @@
         placeholder: "Search for a friend"
       %>
     <% end %>
-    <%= link_to "Go!", restaurants_path, class: "btn-lesconvives" %>
+    <%= link_to "Go!", restaurants_path(event: @event), class: "btn-lesconvives" %>
     </div>
   </div>
 
@@ -31,12 +33,13 @@
         <p class="avatar-name">
           <%= user.first_name %>
         </p>
-        <% if Participant.find_by(user: user, event: @event)%>
-          <%= link_to event_participants_path(user: user.id), method: :delete, remote: true, class: "add-button" do %>
+        <% participant = Participant.find_by(user: user, event: @event) %>
+        <% if participant %>
+          <%= link_to participant_path(participant), method: :delete, class: "add-button" do %>
             <i class="fas fa-minus-circle btn-create"></i>
           <% end %>
         <% else  %>
-          <%= link_to event_participants_path(user: user.id), method: :post, remote: true, class: "add-button" do %>
+          <%= link_to event_participants_path(@event, user: user.id), method: :post, class: "add-button" do %>
             <i class="fas fa-plus-circle btn-create"> </i>
           <% end %>
         <% end %>

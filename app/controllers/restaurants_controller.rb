@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
     @lng = geographic_center[1]
 
 # si pas de params ou si params food category
-    if params[:food_category].present? || Restaurant.near(geographic_center).empty?
+    if params[:food_category].present? || Restaurant.near(geographic_center, 0.1).empty?
       @results_restaurants = parse_google_api(@lat, @lng, food_category)
       @details_restaurants = parse_restaurant_details_api
       if params[:rating].present?
@@ -25,7 +25,8 @@ class RestaurantsController < ApplicationController
         @results_restaurants = @results_restaurants.select {|r| r.price_level == params[:price_level].to_i}
       end
     else
-      @results_restaurants = Restaurant.near(geographic_center).limit(10)
+
+      @results_restaurants = Restaurant.near(geographic_center, 0.1).limit(20)
       if params[:rating].present?
         @results_restaurants = @results_restaurants.where(rating: params[:rating])
       end
@@ -49,7 +50,12 @@ class RestaurantsController < ApplicationController
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
-      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: ActionController::Base.helpers.asset_url('avatar.png'), infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
+      if participant.user.profile_picture.attached?
+        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+      else
+        icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+      end
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon, infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
     end
   end
 
@@ -73,7 +79,6 @@ class RestaurantsController < ApplicationController
         r.google_api_id = restaurant["id"]
         r.place_id_google = restaurant["place_id"]
       end
-
       if restaurant["photos"] && !resto.photo.attached?
         res = Net::HTTP.get_response(URI("https://maps.googleapis.com/maps/api/place/photo?key=#{ENV["GOOGLE_MAPS_TOKEN"]}&photoreference=#{restaurant["photos"][0]["photo_reference"]}&maxwidth=400"))
         file = URI.open(res['location'])
@@ -108,8 +113,9 @@ class RestaurantsController < ApplicationController
 
   def geographic_center
     # retrive_participants_geo_positions
+    @event = Event.find(params[:event])
     @geo_positions = []
-    @participants = Participant.all
+    @participants = @event.participants
     @participants.each do |participant|
       coordinates = []
       coordinates << participant.address.latitude.to_f
@@ -144,7 +150,8 @@ class RestaurantsController < ApplicationController
   # end
 
   def directions_to_geographic_center_distance_matrix_api
-    @participants = Participant.all
+    @event = Event.find(params[:event])
+    @participants = @event.participants
     directions = {}
     @participants.each do |participant|
       url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{participant.address.latitude},#{participant.address.longitude}&destinations=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&units=metric&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"

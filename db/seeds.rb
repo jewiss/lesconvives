@@ -50,11 +50,14 @@ puts "7 users created"
 # levalois = Restaurant.create!(name: 'Le Valois', price_level: '2', rating: '4.3', food_category: 'French', address: '52 Rue de Douai, 75009 Paris, France', phone: '06 44 05 17 79', url: 'www.le-valois.fr')
 # alicheur = Restaurant.create!(name: "L'Alicheur", price_level: '1', rating: '4.7', food_category: 'Chinese', address: '96 Rue Saint-Maur, 75011 Paris, France', phone: '01 43 38 61 38', url: 'www.lalicheur.com')
 # tokugawa = Restaurant.create!(name: 'Tokugawa', price_level: '2', rating: '4.2', food_category: 'Japanese', address: '49 Boulevard du Montparnasse, 75006 Paris, France', phone: '01 42 22 32 59', url: 'tokugawa.fr')
-# losamigos = Restaurant.create!(name: 'Los Amigos', price_level: '3', rating: '4.5', food_category: 'Mexican', address: "23 Rue d'Enghien, 75010 Paris, France", phone: '01 45 89 80 21', url: 'losamigos.fr')
+
+losamigos_pic = URI.open('https://u.tfstatic.com/restaurant_photos/307/406307/169/612/los-amigos-vue-de-la-salle-e20a9.jpg')
+losamigos = Restaurant.create!(name: 'Los Amigos', price_level: '3', rating: '4.5', food_category: 'Mexican', address: "23 Rue d'Enghien, 75010 Paris, France", phone: '01 45 89 80 21', url: 'losamigos.fr')
+losamigos.photo.attach(io: losamigos_pic, filename: 'losamigos_pic.png', content_type: 'image/png')
 
 
-# puts "-------"
-# puts '4 seeds restaurants created'
+puts "-------"
+puts 'restaurant "Los Amigos" created'
 
 # Addresses
 romain_home = Address.create!(name: 'Home', full_address: '74 rue mazarine, 75006 Paris, France', user_id: romain.id)
@@ -64,27 +67,30 @@ lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 7
 
 sandra_work = Address.create!(name: 'Home', full_address: '3 rue oberkampf, 75011, Paris, France', user_id: sandra.id)
 eniko_work = Address.create!(name: 'Home', full_address: '37 Quai Branly, 75007 Paris, France', user_id: eniko.id)
-antoine_work = Address.create!(name: 'Home', full_address: '2 rue de la contamine, 75017, Paris, France', user_id: antoine.id)
+antoine_work = Address.create!(name: 'Home', full_address: '171 Rue de la Croix Nivert, 75015 Paris, France', user_id: antoine.id)
 germain_work = Address.create!(name: 'Home', full_address: '3 rue des acacias, 75017, Paris, France', user_id: germain.id)
 thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin, 75013, Paris, France', user_id: thanh.id)
 
 puts 'addresses created'
 
 # Events
-after_gaudelet = Event.create!(date: Date.new(2020,1,24), name: 'Afterwork Gaudelet')
+after_gaudelet = Event.create!(date: Date.new(2020,1,24), hour: Time.new(19.00), name: 'Afterwork Gaudelet')
+SelectedRestaurant.create(restaurant: losamigos, event: after_gaudelet)
+
 lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
-lewagon_karaoke = Event.create!(date: Date.parse('2020-02-13'), name: 'Karaoke Le Wagon') 
+lewagon_karaoke = Event.create!(date: Date.parse('2020-02-13'), name: 'Karaoke Le Wagon')
 dinner_family = Event.create!(date: Date.parse('2020-02-22'), name: 'Family Dinner')
 demo_day = Event.create!(date: Date.parse('2020-03-06'), name: 'Demo Day Gaudelet')
 tinder_date = Event.create!(date: Date.parse('2020-03-08'), name: 'Tinder Date')
 
-puts "dinner created"
-# Participants
-romain1 = Participant.create!(event_id: dinner_family.id, user_id: romain.id, owner: true, address_id: romain_work.id)
-lucien1 = Participant.create!(event_id: dinner_family.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
-puts "participant created"
+puts "events created"
 
-puts 'Event "Diner des familles" created'
+# Participants
+romain1 = Participant.create!(event_id: after_gaudelet.id, user_id: romain.id, owner: true, address_id: romain_work.id)
+lucien1 = Participant.create!(event_id: after_gaudelet.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
+puts "2 participant created for 'After Gaudelet'"
+
+puts '6 events created'
 puts '-------'
 puts 'Seed finished'
 

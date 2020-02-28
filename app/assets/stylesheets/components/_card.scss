@@ -2,6 +2,8 @@
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .card-trip {
@@ -31,7 +33,7 @@
 
 
 .card-trip .card-trip-infos {
-  padding: 16px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
