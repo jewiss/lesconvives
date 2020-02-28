@@ -9,8 +9,6 @@ class ParticipantsController < ApplicationController
       else
         icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50} }
       end
-      # raise
-      # icon = participant.user.profile_picture.attached? ?
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f

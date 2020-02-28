@@ -50,7 +50,12 @@ class RestaurantsController < ApplicationController
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
-      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: ActionController::Base.helpers.asset_url('avatar.png'), infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
+      if participant.user.profile_picture.attached?
+        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+      else
+        icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+      end
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon, infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
     end
   end
 
