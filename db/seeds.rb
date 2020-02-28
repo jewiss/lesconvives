@@ -71,6 +71,7 @@ thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin
 puts 'addresses created'
 
 # Events
+
 after_gaudelet = Event.create!(date: Date.new(2020,1,24), name: 'Afterwork Gaudelet')
 lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
 lewagon_karaoke = Event.create!(date: Date.parse('2020-02-13'), name: 'Karaoke Le Wagon') 
