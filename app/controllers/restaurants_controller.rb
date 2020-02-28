@@ -66,7 +66,7 @@ class RestaurantsController < ApplicationController
   private
 
   def parse_google_api(lat, lng, food_category)
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=#{food_category}&location=#{lat},#{lng}&radius=100&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=#{food_category}&location=#{lat},#{lng}&radius=200&type=restaurant&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
     restaurants_serialized = open(url).read
     restaurants = JSON.parse(restaurants_serialized)["results"]
     final_restaurants = restaurants.map do |restaurant|
