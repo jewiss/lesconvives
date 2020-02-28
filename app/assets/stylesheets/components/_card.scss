@@ -1,7 +1,14 @@
+.cards {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
 .card-trip {
-  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  min-width: 250px;
+  scroll-snap-align: start;
 }
 
 .card-trip > img {
@@ -41,3 +48,5 @@
 #level-missing {
   opacity: 50%;
 }
+
+

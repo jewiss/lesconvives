@@ -10,37 +10,35 @@
 <div><p>Meeting Point: <%= @geographic_center %></p></div>
 
 <div class="container">
-  <div>
+  <div class="cards">
     <% @results_restaurants.each do |result|%>
-      <div class="card-trip mb-3">
-        <% if result.photo.attached? %>
+      <% if result.photo.attached? %>
+        <div class="card-trip mx-3">
             <%= cl_image_tag result.photo.key , alt: "photo restaurant" %>
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <p> <%= result.name %> </p>
-            <% if result.rating %>
-              <p>
-                <% result.rating.times do%>
-                  <i class="fas fa-star"></i>
-                <% end %>
-                <% (5 - result.rating).times do %>
-                  <i class="fas fa-star" id="level-missing"></i>
-                <% end %>
-              </p>
-            <% end %>
-            <p> <%= result.short_address %></p>
+          <div class="card-trip-infos">
+            <div>
+              <p> <%= result.name %> </p>
+              <% if result.rating %>
+                <p>
+                  <% result.rating.times do%>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5 - result.rating).times do %>
+                    <i class="fas fa-star" id="level-missing"></i>
+                  <% end %>
+                </p>
+              <% end %>
+              <p> <%= result.short_address %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= ("€"*result.price_level.to_i) %></h2>
           </div>
-          <h2 class="card-trip-pricing"><%= ("€"*result.price_level.to_i) %></h2>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
 
-
-
-<div class="bottom-div">
+<div class="bottom-div mt-4">
     <div class="btn-middle">
       <button type="button" class="btn btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
         Apply filters
