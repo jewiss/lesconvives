@@ -33,32 +33,35 @@
   <p>My events</p>
 
     <% current_user.events.each do |event| %>
-      <div class="card-product">
-       <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
-        <div class="card-product-infos">
-          <h2> <%= event.name %></h2>
-          <p> <%= event.date %></p>
-            <div class="d-flex flex-row">
-            <% event.users.each do |user| %>
-              <div class="mr-2">
-                <% if user.profile_picture.attached? %>
-                  <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
-                <% elsif user.facebook_picture_url %>
-                  <%= image_tag user.facebook_picture_url, class: "avatar" %>
-                <% else %>
-                  <i class="card-no-avatar far fa-user"></i>
-                <% end %>
-                <p class="avatar-name">
-                  <%= user.first_name %>
-                </p>
+      <% unless event.selected_restaurants.empty? %>
+        <div class="card-product">
+         <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
+          <div class="card-product-infos">
+            <h2> <%= event.name %></h2>
+            <p> <%= event.date %></p>
+              <div class="d-flex flex-row">
+              <% event.users.each do |user| %>
+                <div class="mr-2">
+                  <% if user.profile_picture.attached? %>
+                    <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+                  <% elsif user.facebook_picture_url %>
+                    <%= image_tag user.facebook_picture_url, class: "avatar" %>
+                  <% else %>
+                    <i class="card-no-avatar far fa-user"></i>
+                  <% end %>
+                  <p class="avatar-name">
+                    <%= user.first_name %>
+                  </p>
+                </div>
+              <% end %>
               </div>
             <% end %>
-            </div>
-          <% end %>
+          </div>
         </div>
-      </div>
 
-    </div>
+      </div>
+    <% end %>
+
 
 </div>
 
