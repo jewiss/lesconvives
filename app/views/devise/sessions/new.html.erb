@@ -10,18 +10,18 @@
                         required: false,
                         autofocus: true,
                         input_html: { autocomplete: "email" } %>
-                        
+
             <%= f.input :password,
                         required: false,
                         input_html: { autocomplete: "current-password" } %>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Log in", class: "btn-lesconvives" %>
+            <%= f.button :submit, "Log in", class: "btn-login btn-lesconvives" %>
           </div>
           <p><%= link_to "Sign up", new_registration_path(resource_name), class: "sign" %></p>
 
           <p><%= link_to "Forgot your password?",  new_password_path(resource_name) %></p>
         <% end %>
-      </div>  
-</div>    
+      </div>
+</div>
