@@ -18,7 +18,7 @@
         <%= "Welcome #{@user.first_name}" %>
       </p>
     </div>
-   </div>
+  </div>
 
   <div class="bottom-div">
     <div class="btn-middle">
@@ -26,18 +26,21 @@
         Create a new event
         <i class="fas fa-plus-circle"></i>
       </button>
-
     </div>
-
   </div>
-</div>
 
 </div>
+
 
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade <%= 'show' if params["controller"] == 'events' %>"
+  style="display: <%= 'block' if params["controller"] == 'events' %>;"
+  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="<%= 'true' if params["controller"] == 'events' %>"
+  aria-modal=" <%'true' if params["controller"] == 'events' %>" >
+
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -50,6 +53,7 @@
         <div class="modal-body">
             <%= f.input :name %>
             <%= f.input :date %>
+            <%= f.input :hour %>
         </div>
         <div class="modal-footer">
         <%= f.submit class: "btn btn-lesconvives" %>
@@ -58,3 +62,6 @@
     </div>
   </div>
 </div>
+<% if params["controller"] == 'events' %>
+  <div class="modal-backdrop fade show"></div>
+<% end %>
