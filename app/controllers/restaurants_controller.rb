@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 # si pas de params ou si params food category
     if params[:food_category].present? || Restaurant.near(geographic_center, 0.1).empty?
       @results_restaurants = parse_google_api(@lat, @lng, food_category)
-      @details_restaurants = parse_restaurant_details_api
+      @details_restaurants = parse_restaurant_details_api(@results_restaurants)
       if params[:rating].present?
         @results_restaurants = @results_restaurants.select {|r| r.rating == params[:rating].to_i}
       end
@@ -94,19 +94,21 @@ class RestaurantsController < ApplicationController
     return final_restaurants
   end
 
-  def parse_restaurant_details_api
-    @restaurants = Restaurant.all
+  def parse_restaurant_details_api(final_restaurants)
+    @restaurants = final_restaurants
     @restaurants.each do |restaurant|
       url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{restaurant.place_id_google}&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
       restaurants_serialized = open(url).read
       restaurants = JSON.parse(restaurants_serialized)["result"]
+      if restaurants != nil
         resto = Restaurant.find_or_create_by(google_api_id: restaurants["id"]) do |r|
           r.opening_hours = restaurant["opening_hours"]["weekday_text"]
           r.url = restaurant["website"]
           r.phone = restaurant["formatted_phone_number"]
         end
-      resto.save!
-      resto
+        resto.save!
+        resto
+      end
     end
     return @restaurants
   end
