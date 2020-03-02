@@ -1,7 +1,9 @@
-<div style="text-align: center">
-  <h5>🍴<%= restaurant.name %></h5>
-  <div style="display: flex; justify-content: space-around; font-size: 16px;">
-    <p >⭐<bold><%= restaurant.rating %>/5</bold></p>
-    <p><bold><%= "€"*restaurant.price_level.to_i %></bold></p>
+<div class="infowindow ">
+  <div style="text-align: center">
+    <h5>🍴<%= restaurant.name %></h5>
+    <div style="display: flex; justify-content: space-around; font-size: 16px;">
+      <p >⭐<bold><%= restaurant.rating %>/5</bold></p>
+      <p><bold><%= "€"*restaurant.price_level.to_i %></bold></p>
+    </div>
   </div>
 </div>

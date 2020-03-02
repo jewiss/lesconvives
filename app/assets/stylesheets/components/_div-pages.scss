@@ -1,10 +1,14 @@
 .top-div {
   font-size: 13px;
-  background-color: #FF8C67;
+  // background-color: #FF8C67;
   height: 40vh;
-  & img {
-    border-radius: 50px;
-  }
+  // & img {
+  //   border-radius: 50px;
+  // }
+  margin-top: 8px;
+  font-size: 30px;
+  color: white;
+  font-weight: bolder;
 }
 
 .top-div p {
@@ -17,9 +21,25 @@
 
 #search_query {
   border-radius: 16px;
-  border: none;
+  border: 1px solid light-grey;
 }
 
 #map-div {
   background-color: none;
+}
+
+.user-show {
+  background: #fd746c;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.user-show-title {
+  margin-top: 30px;
+  & p {
+    padding-left: 10px;
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+  }
 }
