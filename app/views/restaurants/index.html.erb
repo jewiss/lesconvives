@@ -9,11 +9,10 @@
 
 <div class="container">
   <div class="cards">
-
     <% @results_restaurants.each do |result|%>
       <% if result.photo.attached? %>
         <div class="card-trip mx-3">
-            <%= cl_image_tag result.photo.key , alt: "photo restaurant" %>
+            <%= cl_image_tag result.photo.key , alt: "photo restaurant", crop: :fill %>
           <div class="card-trip-infos">
             <div>
               <p> <%= result.name %> </p>
@@ -37,15 +36,13 @@
   </div>
 </div>
 
-<div class="bottom-div mt-4">
-    <div class="btn-middle">
-      <button type="button" class="btn-filter" data-toggle="modal" data-target="#exampleModalCenter">
-        <i class="fas fa-filter"></i>
-      </button>
-
-    </div>
-
+<div class="fixed-filter mt-4">
+  <div class="btn-middle">
+    <button type="button" class="btn-filter" data-toggle="modal" data-target="#exampleModalCenter">
+      <i class="fas fa-filter"></i>
+    </button>
   </div>
+</div>
 
 
 
