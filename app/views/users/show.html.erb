@@ -88,9 +88,9 @@
       </div>
       <%= simple_form_for(@event) do |f| %>
         <div class="modal-body">
-            <%= f.input :name %>
-            <%= f.input :date %>
-            <%= f.input :hour %>
+            <%= f.input :name, label: "Give a name to your event" %>
+            <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Chose the date of your event"%>
+            <%= f.input :hour, as: :string, input_html: {class: "hourpicker"}, label: "Indicate the hour of your event" %>
         </div>
         <div class="modal-footer">
         <%= f.submit class: "btn btn-lesconvives" %>
