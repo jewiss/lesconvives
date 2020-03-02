@@ -15,6 +15,23 @@
       </div>
 
       <p><%= "Hello, #{@user.first_name}!" %></p>
+      <p>
+        <% if @user.addresses.find_by(active: true) %>
+          <%= @user.addresses.find_by(active: true).full_address %>
+          <%= link_to edit_user_address_path(@user, @user.addresses.first) do %>
+            <p> Edit address <i class="fas fa-location-arrow"></i> </p>
+          <% end %>
+        <% elsif %>
+          <%= @user.addresses.first.full_address %>
+          <%= link_to edit_user_address_path(@user, @user.addresses.first) do %>
+            <p> Edit address <i class="fas fa-location-arrow"></i> </p>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_address_path(:user) do %>
+            <p> Add an address <i class="fas fa-location-arrow"></i> </p>
+          <% end %>
+        <% end %>
+      </p>
     </div>
   </div>
 
@@ -87,7 +104,7 @@
             <%= f.input :hour, as: :string, input_html: {class: "hourpicker"}, label: "Choose the hour of your event" %>
         </div>
         <div class="modal-footer">
-        <%= f.submit class: "btn btn-lesconvives" %>
+        <%= f.submit class: "btn-lesconvives" %>
         </div>
       <% end %>
     </div>
