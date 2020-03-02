@@ -1,52 +1,45 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">
+<div class="container-fluid container-fluid-show">
+  <div class="row justify-content-center row-content">
     <div class="col-sm-12 col-lg-6">
-    	<div class="img" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url();">
-
-
-<!-- card description -->            
-        <div class="description-container">
+    	<div class="img-background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
+    	</div>
+<!-- card description --> 
+         
+        <div class="container container-description">
             <div class="card-details d-flex bd-highlight" >
+	            
+	              <ul class="list-group">
+		            <li class="list-group-item">
+		              <i class="fas fa-home"></i> <%= @restaurant.name %>
+		            </li>
 
-	            <div class="bd-highlight">
-	              <ul class="list-group list-group-flush">
 		            <li class="list-group-item">
-		              <i class="fas fa-utensils"></i>
+		              <i class="fas fa-map-marker-alt"></i> <%= @restaurant.short_address %>
 		            </li>
-		            <li class="list-group-item">
-		              <i class="fas fa-euro-sign"></i>
-		            </li>
-		            <li class="list-group-item">
-		              <i class="fas fa-star"></i>
-		            </li>
-		            <li class="list-group-item">
-		              <i class="fas fa-utensils"></i>
-		            </li>
-		            <li class="list-group-item">
-		              <i class="fas fa-phone"></i>
-		            </li>
-		          </ul>
-	            </div>
 
-		        <div class="flex-grow-1 bd-highlight">
-		          <ul class="list-group list-group-flush">
 		            <li class="list-group-item">
-		              <%= @restaurant.name %>
+		            	<p>
+                          <% @restaurant.price_level.to_i.times do %>
+                          <i class="fas fa-euro-sign"></i>
+                        <% end %> 
 		            </li>
 		            <li class="list-group-item">
-		              <%= @restaurant.price_level %> campers
+		              <p>
+                        <% @restaurant.rating.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
 		            </li>
 		            <li class="list-group-item">
-		              <%= @restaurant.rating %>
+		              <i class="fas fa-utensils"></i> <%= @restaurant.food_category %>
 		            </li>
+
 		            <li class="list-group-item">
-		              <%= @restaurant.food_category %>
+		              <i class="fas fa-phone"></i> <%= @restaurant.phone %>
+		              <a href="#"></a>
 		            </li>
-		            <li class="list-group-item">
-		              <%= @restaurant.phone %>
-		            </li>
-		          </ul>
-		        </div>
+
+		          </ul>	
+
 	        </div> 
         </div>
 
