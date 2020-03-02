@@ -1,0 +1,28 @@
+.container-fluid-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.img-background {
+ height: 300px;
+ background-size: cover;
+ margin-top: 100px;
+ width: 100%;
+}
+
+.container-description {
+  width: 100%;
+}
+
+.row-content {
+  width: 100%;	
+}
+
+.list-group {
+	width: 100%;
+	text-align: center;
+	padding: 24px;
+}

@@ -1,0 +1,48 @@
+<div class="container-fluid container-fluid-show">
+  <div class="row justify-content-center row-content">
+    <div class="col-sm-12 col-lg-6">
+    	<div class="img-background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);">
+    	</div>
+<!-- card description --> 
+         
+        <div class="container container-description">
+            <div class="card-details d-flex bd-highlight" >
+	            
+	              <ul class="list-group">
+		            <li class="list-group-item">
+		              <i class="fas fa-home"></i> <%= @restaurant.name %>
+		            </li>
+
+		            <li class="list-group-item">
+		              <i class="fas fa-map-marker-alt"></i> <%= @restaurant.short_address %>
+		            </li>
+
+		            <li class="list-group-item">
+		            	<p>
+                          <% @restaurant.price_level.to_i.times do %>
+                          <i class="fas fa-euro-sign"></i>
+                        <% end %> 
+		            </li>
+		            <li class="list-group-item">
+		              <p>
+                        <% @restaurant.rating.times do %>
+                        <i class="fas fa-star"></i>
+                      <% end %>
+		            </li>
+		            <li class="list-group-item">
+		              <i class="fas fa-utensils"></i> <%= @restaurant.food_category %>
+		            </li>
+
+		            <li class="list-group-item">
+		              <i class="fas fa-phone"></i> <%= @restaurant.phone %>
+		              <a href="#"></a>
+		            </li>
+
+		          </ul>	
+
+	        </div> 
+        </div>
+
+    </div>
+  </div>
+</div    	
