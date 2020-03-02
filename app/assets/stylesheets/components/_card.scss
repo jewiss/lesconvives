@@ -1,7 +1,4 @@
 .cards {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
   padding-top: 2%;
   padding-bottom: 2%;
 }
@@ -9,8 +6,7 @@
 .card-trip {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  min-width: 250px;
-  scroll-snap-align: start;
+  margin-bottom: 8px;
 }
 
 .card-trip > img {

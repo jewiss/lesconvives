@@ -1,13 +1,15 @@
 <%= render 'shared/navbar' %>
-<div class="meeting-point"><p>📍 <%= @geographic_center %></p></div>
 
 <div class="top-div">
   <div id="map" data-markers="<%= @markers.to_json %>" style="width: 100%;
-    height: 40vh;"></div>
+    height: 80vh;"></div>
 </div>
+
+<div class="meeting-point"><p>📍 <%= @geographic_center %></p></div>
 
 <div class="container">
   <div class="cards">
+
     <% @results_restaurants.each do |result|%>
       <% if result.photo.attached? %>
         <div class="card-trip mx-3">
@@ -37,9 +39,8 @@
 
 <div class="bottom-div mt-4">
     <div class="btn-middle">
-      <button type="button" class="btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
-        Apply filters
-        <i class="fas fa-plus-circle"></i>
+      <button type="button" class="btn-filter" data-toggle="modal" data-target="#exampleModalCenter">
+        <i class="fas fa-filter"></i>
       </button>
 
     </div>
