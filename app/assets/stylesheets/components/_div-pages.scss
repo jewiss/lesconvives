@@ -11,6 +11,13 @@
   font-weight: bolder;
 }
 
+.map-div {
+  background-color: $yellow;
+  height: 80vh;
+  & img {
+  border-radius: 24px;
+}
+
 .top-div p {
   margin-top: 8px;
 }

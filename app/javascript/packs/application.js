@@ -24,13 +24,18 @@ require("channels")
 import "bootstrap";
 import { initMap } from '../components/init_map.js';
 import { changeAvatarWhenParticipant } from '../components/create_participant.js';
+import { filterRating } from '../components/filter_restaurant';
+import { filterPrice} from '../components/filter_restaurant';
 import flatpickr from "flatpickr"
 import "flatpickr/dist/themes/airbnb.css"
 import { flatPicker } from "../plugins/flatpickr";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { getUserLocation } from "../components/get_geolocation";
 
+
 document.addEventListener('turbolinks:load', () => {
+  filterRating();
+  filterPrice();
   initMap();
   changeAvatarWhenParticipant();
   flatPicker();
