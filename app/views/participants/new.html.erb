@@ -1,8 +1,8 @@
 <div style="height: 100vh;">
 <%= render 'shared/navbar' %>
-<div class="top-div d-flex justify-content-center">
+<div class="map-div d-flex justify-content-center">
   <div id="map" data-markers="<%= @markers.to_json %>" style="width: 100%;
-    height: 40vh;"></div>
+    height: 80vh;"></div>
 </div>
 
 <div class="bottom-div">
@@ -46,6 +46,7 @@
     <% end %>
   </div>
 </div>
-    <%= link_to "Let's Go!", restaurants_path(event: @event), class: "btn btn-lesconvives" %>
+    <%= link_to "Let's Go!", restaurants_path(event: @event), class: "btn btn-lesconvives", id:"loader" %>
 </div>
+<img src="https://media.giphy.com/media/RKpEx82Qv99Ddw31GJ/giphy.gif" alt="loader" class="loader-gif">
 

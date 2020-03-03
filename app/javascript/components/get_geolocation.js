@@ -1,7 +1,7 @@
 const getUserLocation = () => {
   const userPosition = document.getElementById('my-position');
   if (userPosition) {
-    document.addEventListener("click", (event) => {
+    userPosition.addEventListener("click", (event) => {
       event.preventDefault();
       navigator.geolocation.getCurrentPosition((data) => {
         console.log(data);

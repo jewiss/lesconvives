@@ -129,7 +129,7 @@ class RestaurantsController < ApplicationController
 
   def geo_center_to_address(geo_center)
     results = Geocoder.search([geo_center[0], geo_center[1]])
-    if results
+    if results.any?
       @full_address = results.first.data['address']
       if @full_address['road'].nil?
         road = @full_address['way']
