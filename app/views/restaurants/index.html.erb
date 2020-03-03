@@ -51,7 +51,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div>
-          <%= form_tag restaurants_path do |f| %>
+          <%= form_tag restaurants_path, method: :get do %>
             <% food_category = Restaurant::CATEGORY %>
             <fieldset class="form-group radio_buttons restaurants_food_category">
               <legend class="col-form-label pt-0">You want to eat :</legend>
@@ -93,7 +93,7 @@
                 <% end %>
               </div>
             </fieldset>
-            <%= f.submit 'Apply filters' %>
+            <%= submit_tag 'Apply filters' %>
           <% end %>
         </div>
       </div>
