@@ -1,12 +1,12 @@
 .top-div {
   font-size: 13px;
   // background-color: #FF8C67;
-  height: 40vh;
+  height: 50vh;
   // & img {
   //   border-radius: 50px;
   // }
   margin-top: 8px;
-  font-size: 30px;
+  font-size: 20px;
   color: white;
   font-weight: bolder;
 }
@@ -26,6 +26,10 @@
   position: relative;
 }
 
+.addresses {
+   overflow: auto;
+  }
+
 #search_query {
   border-radius: 16px;
   border: 1px solid light-grey;
@@ -42,11 +46,14 @@
 }
 
 .user-show-title {
-  margin-top: 30px;
+  margin-top: 40px;
+  overflow: auto;
   & p {
     padding-left: 10px;
     color: white;
+    opacity: 0.9;
     font-weight: bolder;
-    font-size: 22px;
+    font-size: 20px;
+    margin-bottom: 0px;
   }
 }
