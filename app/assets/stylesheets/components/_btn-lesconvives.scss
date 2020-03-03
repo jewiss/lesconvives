@@ -37,3 +37,15 @@
   position: relative;
   right: 165px;
 }
+
+.fixed-filter {
+  position: relative;
+  bottom: 10px;
+  z-index: 1000;
+}
+
+#btn-close-position {
+  position: relative;
+  bottom: 30px;
+  left: 55px;
+}

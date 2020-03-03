@@ -14,13 +14,13 @@
 .restaurants_food_category label {
   background-color: white;
   padding: 3px 6px;
-  box-shadow: 1px 1px 2px;
   width: 100%;
   margin: 0px;
   height: 80px;
   align-items: center;
   display: flex;
   justify-content: center;
+  box-shadow: 0px 0px 5px -1px;
 }
 .restaurants_food_category input:checked + label {
   background-color: black;
@@ -40,6 +40,10 @@
   padding: 3px 6px;
   opacity: 0.2;
   font-size: 30px;
+  &.active {
+    color: green;
+    opacity: 1;
+  }
 }
 
 .restaurants_rating input:checked + label {
@@ -54,4 +58,18 @@
 
 .restaurants_price_level input {
   visibility: hidden;
+}
+
+.restaurants_price_level label {
+  padding: 3px 6px;
+  opacity: 0.2;
+  font-size: 30px;
+    &.active {
+    color: green;
+    opacity: 1;
+  }
+}
+
+.restaurants_price_level input:checked + label {
+  opacity: 1;
 }
