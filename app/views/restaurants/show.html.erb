@@ -1,74 +1,56 @@
-<div class="container-fluid container-fluid-show">
-  <div class="row justify-content-center row-content">
-    <div class="col-sm-12 col-lg-6">
-    	<div class="img-background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @restaurant.photo.key , alt: "photo restaurant" %>)";>
- 
-        	<%= link_to restaurants_path(event: params[:event]) do%>
-        	 	<i class="fas fa-arrow-circle-left"></i>
-        	<% end %> 
-        	 	
-    	</div>
-<!-- card description --> 
-         
-        <div class="container-description">
-            <div class="card-details d-flex bd-highlight" >
-	              
-	              <ul class="list-group">
-		            <li class="list-group-item" id="title-resto">
-		               <%= @restaurant.name %>
-		            </li>
+<div class="img-background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @restaurant.photo.key , alt: "photo restaurant" %>)">
+	<%= link_to restaurants_path(event: params[:event]) do%>
+	  <i class="fas fa-chevron-left"></i>
+	<% end %>
+</div>
 
-		            <li class="list-group-item">
-		              <i class="fas fa-map-marker-alt"></i> <%= @restaurant.short_address %>
-		            </li>
 
-		            <li class="list-group-item">
-		              <i class="fas fa-globe"></i>
-		               <%= link_to @restaurant.url, "#{@restaurant.url}", :target =>"_blank" %> 
-		            </li>
+<!-- card description -->
 
-		            <% if @restaurant.opening_hours %>
-		              <li class="list-group-item">
-		                <i class="fas fa-hourglass-start"></i> 
-		                <% array = JSON.parse(@restaurant.opening_hours) %>
-		                <% array.each do |hour| %>
-		                   <p class="hours"><%= hour %></p>
-		                <% end %>
+<ul class="list-group">
+  <li class="list-group-item" id="title-resto"><%= @restaurant.name %></li>
+  <li class="list-group-item">
+    <i class="fas fa-map-marker-alt"></i>
+    <%= @restaurant.short_address %>
+  </li>
+  <% if @restaurant.url %>
+    <li class="list-group-item">
+      <i class="fas fa-globe"></i>
+      <%= link_to @restaurant.url, "#{@restaurant.url}", :target =>"_blank" %>
+    </li>
+  <% end %>
+  <% if @restaurant.opening_hours %>
+    <li class="list-group-item">
+      <i class="fas fa-hourglass-start"></i>
+      <% array = JSON.parse(@restaurant.opening_hours) %>
+      <% array.each do |hour| %>
+        <p class="hours"><%= hour %></p>
+      <% end %>
+    </li>
+  <% end %>
 
-		              </li>
-		            <% end %>
-		            
-		            <% if @restaurant.rating %>
-		              <li class="list-group-item">
-                  		<% @restaurant.rating.times do%>
-                    	  <i class="fas fa-star"></i>
-                  	    <% end %>
-                  	  </li>
-                  	<% end %>
+  <% if @restaurant.rating %>
+    <li class="list-group-item">
+      <% @restaurant.rating.times do%>
+        <i class="fas fa-star"></i>
+      <% end %>
+    </li>
+  <% end %>
 
-                  	<% if @restaurant.price_level %>
-		              <li class="list-group-item">
-                        <% @restaurant.price_level.to_i.times do %>
-                          <i class="fas fa-euro-sign"></i>
-                        <% end %> 
-		              </li>
-		           <% end %>
+  <% if @restaurant.price_level %>
+    <li class="list-group-item">
+      <% @restaurant.price_level.to_i.times do %>
+        <i class="fas fa-euro-sign"></i>
+      <% end %>
+    </li>
+  <% end %>
+  <% if @restaurant.food_category %>
+    <li class="list-group-item">
+    <i class="fas fa-utensils"></i> <%= @restaurant.food_category %></li>
+  <% end %>
+</ul>
 
-		            <% if @restaurant.food_category %>
-		              <li class="list-group-item">
-		                <i class="fas fa-utensils"></i> <%= @restaurant.food_category %>
-		              </li>
-		            <% end %>  
+<div style="margin-top: 15px; display:flex; justify-content: center; text-align: center;">
+  <a class="btn-lesconvives" href="tel:<%= @restaurant.phone %>">Make a Reservation</a>
+</div>
 
-		            <li class="list-group-item">
-		              <a class="btn-conv" href="tel:<%= @restaurant.phone %>"> Book now </a> 
-		            </li>
-
-		          </ul>	
-
-	        </div> 
-        </div>
-
-    </div>
-  </div>
-</div    	

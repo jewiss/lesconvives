@@ -1,3 +1,19 @@
 .infowindow {
   color: black;
 }
+
+.view-card-btn {
+  background-color: #142850;
+  border-radius: 16px;
+  padding: 6px;
+  font-weight: bold;
+  box-shadow: 10px 10px 20px -8px rgba(0,0,0,0.24);
+}
+
+.view-card-btn-link {
+  text-decoration: none !important;
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
