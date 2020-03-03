@@ -26,3 +26,29 @@
   justify-content: center;
   padding-inline: 40px;
 }
+
+.btn-filter {
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  background-color: #1EDD88;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  color: white;
+  border: none;
+  bottom: 10px;
+  position: relative;
+  right: 165px;
+}
+
+.fixed-filter {
+  position: relative;
+  bottom: 10px;
+  z-index: 1000;
+}
+
+#btn-close-position {
+  position: relative;
+  bottom: 30px;
+  left: 55px;
+}

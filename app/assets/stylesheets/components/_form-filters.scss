@@ -1,0 +1,75 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: 80px 80px 80px;
+}
+
+.form-check {
+  padding: 0px;
+}
+
+.restaurants_food_category input {
+  visibility: hidden;
+}
+
+.restaurants_food_category label {
+  background-color: white;
+  padding: 3px 6px;
+  width: 100%;
+  margin: 0px;
+  height: 80px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 0px 5px -1px;
+}
+.restaurants_food_category input:checked + label {
+  background-color: black;
+  color: white;
+}
+
+// Rating mise en forme
+.rating-form {
+  display: flex;
+}
+
+.restaurants_rating input {
+  visibility: hidden;
+}
+
+.restaurants_rating label {
+  padding: 3px 6px;
+  opacity: 0.2;
+  font-size: 30px;
+  &.active {
+    color: green;
+    opacity: 1;
+  }
+}
+
+.restaurants_rating input:checked + label {
+  opacity: 1;
+}
+
+
+//Price level mise en forme
+.price-form {
+  display: flex;
+}
+
+.restaurants_price_level input {
+  visibility: hidden;
+}
+
+.restaurants_price_level label {
+  padding: 3px 6px;
+  opacity: 0.2;
+  font-size: 30px;
+    &.active {
+    color: green;
+    opacity: 1;
+  }
+}
+
+.restaurants_price_level input:checked + label {
+  opacity: 1;
+}
