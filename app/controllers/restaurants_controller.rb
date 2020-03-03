@@ -101,11 +101,10 @@ class RestaurantsController < ApplicationController
       restaurants_serialized = open(url).read
       restaurants = JSON.parse(restaurants_serialized)["result"]
       if restaurants != nil
-        resto = Restaurant.find_or_create_by(google_api_id: restaurants["id"]) do |r|
-          r.opening_hours = restaurant["opening_hours"]["weekday_text"]
-          r.url = restaurant["website"]
-          r.phone = restaurant["formatted_phone_number"]
-        end
+        resto = Restaurant.find_or_create_by(google_api_id: restaurants["id"])
+        resto.opening_hours = restaurants["opening_hours"]["weekday_text"] if restaurants["opening_hours"]
+        resto.url = restaurants["website"]
+        resto.phone = restaurants["formatted_phone_number"]
         resto.save!
         resto
       end
