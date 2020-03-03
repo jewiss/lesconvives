@@ -93,6 +93,7 @@
                 <% end %>
               </div>
             </fieldset>
+             <%= hidden_field_tag :event, @event.id %>
             <%= submit_tag 'Apply filters' %>
           <% end %>
         </div>
@@ -101,6 +102,7 @@
   </div>
 </div>
 
+<%= console %>
 
 
 
