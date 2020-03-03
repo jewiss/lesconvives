@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :addresses, only: %i[index new create edit update destroy] do
       post :create_from_coordinates, on: :collection
+      patch :update_from_participants, on: :collection
     end
   end
 
