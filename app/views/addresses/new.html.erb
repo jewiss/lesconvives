@@ -1,0 +1,10 @@
+  <div class="container p-3">
+
+    <%= simple_form_for @address, url: user_address_path(@user, @address), html: { method: :patch } do |f| %>
+      <%= f.input :full_address %>
+      <%= f.input  :name, collection: ["Home", "Work", "Other"] %>
+      <%= f.input :active, as: :boolean, checked_value: true, unchecked_value: false, label: "Choose as default address" %>
+      <%= f.submit class: "btn-lesconvives" %>
+    <% end %>
+
+  </div>

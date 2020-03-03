@@ -20,12 +20,27 @@ require("channels")
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
+
 import "bootstrap";
 import { initMap } from '../components/init_map.js';
 import { changeAvatarWhenParticipant } from '../components/create_participant.js';
-
+import flatpickr from "flatpickr"
+import "flatpickr/dist/themes/airbnb.css"
+import { flatPicker } from "../plugins/flatpickr";
+import { initAutocomplete } from "../plugins/init_autocomplete";
+import { getUserLocation } from "../components/get_geolocation";
 
 document.addEventListener('turbolinks:load', () => {
   initMap();
   changeAvatarWhenParticipant();
+  flatPicker();
+  initAutocomplete();
+  getUserLocation();
 });
+
+
+
+
+
+
+
