@@ -5,9 +5,9 @@ class ParticipantsController < ApplicationController
     @markers = []
     @event.participants.each do |participant|
       if participant.user.profile_picture.attached?
-        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key, transformation: [{radius: 'max'}]), scaledSize: { width: 50, height: 50} }
       else
-        icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50} }
+        icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/50x50"), scaledSize: { width: 50, height: 50} }
       end
       coordinates = []
       coordinates << participant.address.latitude.to_f
