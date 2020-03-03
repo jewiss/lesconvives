@@ -31,7 +31,7 @@ import "flatpickr/dist/themes/airbnb.css"
 import { flatPicker } from "../plugins/flatpickr";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { getUserLocation } from "../components/get_geolocation";
-
+import { addLoader } from "../components/loader";
 
 document.addEventListener('turbolinks:load', () => {
   filterRating();
@@ -41,6 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   flatPicker();
   initAutocomplete();
   getUserLocation();
+  addLoader();
 });
 
 
