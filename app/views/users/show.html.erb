@@ -35,50 +35,51 @@
     </div>
 
 <!-- other div -->
-  <div class="bottom-div">
-    <div class="btn-middle">
-      <button type="button" class="btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
-        Create a new event
-        <i class="fas fa-plus-circle"></i>
-      </button>
+  <% if @user.addresses.first %>
+    <div class="bottom-div">
+      <div class="btn-middle">
+        <button type="button" class="btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
+          Create a new event
+          <i class="fas fa-plus-circle"></i>
+        </button>
+      </div>
     </div>
-  </div>
 
 <!-- third div -->
 
     <div class="user-show-title"><p>My events</p></div>
 
-    <div class="container-user-profile">
-      <% current_user.events.each do |event| %>
-        <% unless event.selected_restaurants.empty? %>
-          <div class="card-product">
-            <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
-            <div class="card-product-infos">
-              <h2> <%= event.name %></h2>
-              <p> <%= event.date %></p>
-                <div class="d-flex flex-row">
-                  <% event.users.each do |user| %>
-                    <div class="mr-2">
-                      <% if user.profile_picture.attached? %>
-                        <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
-                      <% elsif user.facebook_picture_url %>
-                        <%= image_tag user.facebook_picture_url, class: "avatar" %>
-                      <% else %>
-                        <i class="card-no-avatar far fa-user"></i>
-                      <% end %>
-                      <p class="avatar-name"><%= user.first_name %></p>
-                    </div>
-                  <% end %>
-                </div>
+      <div class="container-user-profile">
+        <% current_user.events.each do |event| %>
+          <% unless event.selected_restaurants.empty? %>
+            <div class="card-product">
+              <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
+              <div class="card-product-infos">
+                <h2> <%= event.name %></h2>
+                <p> <%= event.date %></p>
+                  <div class="d-flex flex-row">
+                    <% event.users.each do |user| %>
+                      <div class="mr-2">
+                        <% if user.profile_picture.attached? %>
+                          <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+                        <% elsif user.facebook_picture_url %>
+                          <%= image_tag user.facebook_picture_url, class: "avatar" %>
+                        <% else %>
+                          <i class="card-no-avatar far fa-user"></i>
+                        <% end %>
+                        <p class="avatar-name"><%= user.first_name %></p>
+                      </div>
+                    <% end %>
+                  </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+    </div>
   </div>
-
 </div>
+<% end %>
 
-  </div>
 <!-- Modal -->
 <div class="modal fade <%= 'show' if params["controller"] == 'events' %>"
   style="display: <%= 'block' if params["controller"] == 'events' %>;"

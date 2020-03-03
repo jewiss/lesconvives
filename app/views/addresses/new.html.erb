@@ -1,10 +1,30 @@
-  <div class="container p-3">
+<div class="d-flex flex-column user-show", style="height: 100vh;">
 
-    <%= simple_form_for @address, url: user_address_path(@user, @address), html: { method: :patch } do |f| %>
-      <%= f.input :full_address %>
-      <%= f.input  :name, collection: ["Home", "Work", "Other"] %>
-      <%= f.input :active, as: :boolean, checked_value: true, unchecked_value: false, label: "Choose as default address" %>
-      <%= f.submit class: "btn-lesconvives" %>
-    <% end %>
+  <div class="top-div d-flex flex-column justify-content-center align-items-center">
 
+    <div class="d-flex">
+      <h2> <%= "#{@user.first_name}, add an address !" %></h2>
+    </div>
+
+    <div class="container">
+        <%= simple_form_for @address, url: create_from_coordinates_user_addresses_path(@user), html: { method: :post, id: "geolocation-form" } do |f| %>
+          <%= f.input :latitude, as: :hidden %>
+          <%= f.input :longitude, as: :hidden %>
+          <%= f.submit "Create new address from my position", class: "btn btn-success", id: "my-position" %>
+        <% end %>
+    </div>
   </div>
+
+  <div class="bottom-div addresses">
+    <div class="container p-3">
+      <h4>Enter an address manualy</h4>
+      <%= simple_form_for @address, url: user_addresses_path(@user), html: { method: :post } do |f| %>
+        <%= f.input :full_address %>
+        <%= f.input  :name, collection: ["Home", "Work", "Other"] %>
+        <%= f.input :active, as: :boolean, label: "Choose as default address" %>
+        <%= f.submit class: "btn btn-light" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
