@@ -14,27 +14,25 @@
         <% end %>
       </div>
 
-      <p><%= "Hello, #{@user.first_name}!" %></p>
-      <p>
+      <p class="welcome-message"><%= "Hello, #{@user.first_name}!" %></p>
+      <div id="user-address">
         <% if @user.addresses.find_by(active: true) %>
-          <%= @user.addresses.find_by(active: true).full_address %>
-          <%= link_to edit_user_address_path(@user, @user.addresses.first) do %>
-            <p> Edit address <i class="fas fa-location-arrow"></i> </p>
+          <%= link_to user_addresses_path(@user) do %>
+            <%= @user.addresses.find_by(active: true).full_address %>
+            <i class="far fa-edit"></i>
           <% end %>
-        <% elsif %>
-          <%= @user.addresses.first.full_address %>
-          <%= link_to edit_user_address_path(@user, @user.addresses.first) do %>
-            <p> Edit address <i class="fas fa-location-arrow"></i> </p>
+        <% elsif @user.addresses.first %>
+          <%= link_to user_addresses_path(@user) do %>
+            <%= @user.addresses.first.full_address %>
+            <i class="far fa-edit"></i>
           <% end %>
         <% else %>
-          <%= link_to new_user_address_path(:user) do %>
+          <%= link_to new_user_address_path(@user) do %>
             <p> Add an address <i class="fas fa-location-arrow"></i> </p>
           <% end %>
         <% end %>
-      </p>
+      </div>
     </div>
-    <p><%= "Hello, #{@user.first_name}!" %></p>
-  </div>
 
 <!-- other div -->
   <div class="bottom-div">
@@ -80,6 +78,7 @@
 
 </div>
 
+  </div>
 <!-- Modal -->
 <div class="modal fade <%= 'show' if params["controller"] == 'events' %>"
   style="display: <%= 'block' if params["controller"] == 'events' %>;"
