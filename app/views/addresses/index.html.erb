@@ -1,0 +1,35 @@
+<div class="d-flex flex-column user-show", style="height: 100vh;">
+
+  <div class="top-div d-flex flex-column justify-content-center align-items-center">
+
+    <div class="d-flex">
+      <h2> <%= "#{@user.first_name} addresses" %></h2>
+    </div>
+
+    <div class="container">
+        <%= simple_form_for @new_address, url: create_from_coordinates_user_addresses_path(@user), html: { method: :post, id: "geolocation-form" } do |f| %>
+          <%= f.input :latitude, as: :hidden %>
+          <%= f.input :longitude, as: :hidden %>
+          <%= f.submit "Create new address from my position", class: " btn btn-success", id: "my-position" %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="bottom-div addresses">
+    <% @addresses.each_with_index do |address, index| %>
+      <div class="container p-3">
+        <h4> <%= "Address ##{index + 1}" %></h4>
+        <%= simple_form_for address, url: user_address_path(@user, address.id), html: { method: :patch } do |f| %>
+          <%= f.input :full_address, label: false %>
+          <%= f.input  :name, collection: ["Home", "Work", "Other"] %>
+          <%= f.input :active, as: :boolean, label: "Choose as default address" %>
+          <%= f.submit class: "btn btn-success" %>
+          <%= link_to user_address_path(@user, address.id), method: :delete, remote: true do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        <% end %> 
+      </div>
+    <% end %>
+  </div>
+</div>
+

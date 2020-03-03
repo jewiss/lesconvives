@@ -7,6 +7,10 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(params_address)
+    if @address.active = true
+      current_user.addresses.each { |address| address.active = false }
+      @address.active = true
+    end
     if @address.save
       redirect_to root_path
     else
@@ -26,21 +30,29 @@ class AddressesController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
+  def index
     @new_address = Address.new()
     @addresses = current_user.addresses
-    @address = Address.find(params[:id])
     @user = current_user
   end
 
   def update
     @address = Address.find(params[:id])
-    @address.update(params_address)
-    if @address.save
+    if @address.active = true
+      current_user.addresses.each { |address| address.active = false }
+      @address.active = true
+    end
+    if @address.update(params_address)
       redirect_to root_path
     else
       render :new
     end
+  end
+
+  def destroy
+    @address = Address.find(params[:id])
+    @address.delete
+    redirect_to user_addresses_path
   end
 
   private
