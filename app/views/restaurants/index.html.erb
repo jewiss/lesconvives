@@ -51,7 +51,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div>
-          <%= simple_form_for restaurants_path do |f| %>
+          <%= form_tag restaurants_path do |f| %>
             <% food_category = Restaurant::CATEGORY %>
             <fieldset class="form-group radio_buttons restaurants_food_category">
               <legend class="col-form-label pt-0">You want to eat :</legend>
