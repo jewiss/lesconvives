@@ -5,5 +5,8 @@
       <p >⭐<bold><%= restaurant.rating %>/5</bold></p>
       <p><bold><%= "€"*restaurant.price_level.to_i %></bold></p>
     </div>
+    <div class="view-card-btn">
+      <%= link_to "VIEW", restaurant_path(restaurant[:id], event: params[:event]), class: "view-card-btn-link" %>
+    </div>
   </div>
 </div>
