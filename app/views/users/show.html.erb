@@ -14,71 +14,71 @@
         <% end %>
       </div>
 
-      <p><%= "Hello, #{@user.first_name}!" %></p>
-      <p>
+      <p class="welcome-message"><%= "Hello, #{@user.first_name}!" %></p>
+      <div id="user-address">
         <% if @user.addresses.find_by(active: true) %>
-          <%= @user.addresses.find_by(active: true).full_address %>
-          <%= link_to edit_user_address_path(@user, @user.addresses.first) do %>
-            <p> Edit address <i class="fas fa-location-arrow"></i> </p>
+          <%= link_to user_addresses_path(@user) do %>
+            <%= @user.addresses.find_by(active: true).full_address %>
+            <i class="far fa-edit"></i>
           <% end %>
-        <% elsif %>
-          <%= @user.addresses.first.full_address %>
-          <%= link_to edit_user_address_path(@user, @user.addresses.first) do %>
-            <p> Edit address <i class="fas fa-location-arrow"></i> </p>
+        <% elsif @user.addresses.first %>
+          <%= link_to user_addresses_path(@user) do %>
+            <%= @user.addresses.first.full_address %>
+            <i class="far fa-edit"></i>
           <% end %>
         <% else %>
-          <%= link_to new_user_address_path(:user) do %>
+          <%= link_to new_user_address_path(@user) do %>
             <p> Add an address <i class="fas fa-location-arrow"></i> </p>
           <% end %>
         <% end %>
-      </p>
+      </div>
     </div>
-    <p><%= "Hello, #{@user.first_name}!" %></p>
-  </div>
 
 <!-- other div -->
-  <div class="bottom-div">
-    <div class="btn-middle">
-      <button type="button" class="btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
-        Create a new event
-        <i class="fas fa-plus-circle"></i>
-      </button>
+  <% if @user.addresses.first %>
+    <div class="bottom-div">
+      <div class="btn-middle">
+        <button type="button" class="btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
+          Create a new event
+          <i class="fas fa-plus-circle"></i>
+        </button>
+      </div>
     </div>
-  </div>
 
 <!-- third div -->
 
     <div class="user-show-title"><p>My events</p></div>
 
-    <div class="container-user-profile">
-      <% current_user.events.each do |event| %>
-        <% unless event.selected_restaurants.empty? %>
-          <div class="card-product">
-            <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
-            <div class="card-product-infos">
-              <h2> <%= event.name %></h2>
-              <p> <%= event.date %></p>
-                <div class="d-flex flex-row">
-                  <% event.users.each do |user| %>
-                    <div class="mr-2">
-                      <% if user.profile_picture.attached? %>
-                        <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
-                      <% elsif user.facebook_picture_url %>
-                        <%= image_tag user.facebook_picture_url, class: "avatar" %>
-                      <% else %>
-                        <i class="card-no-avatar far fa-user"></i>
-                      <% end %>
-                      <p class="avatar-name"><%= user.first_name %></p>
-                    </div>
-                  <% end %>
-                </div>
+      <div class="container-user-profile">
+        <% current_user.events.each do |event| %>
+          <% unless event.selected_restaurants.empty? %>
+            <div class="card-product">
+              <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
+              <div class="card-product-infos">
+                <h2> <%= event.name %></h2>
+                <p> <%= event.date %></p>
+                  <div class="d-flex flex-row">
+                    <% event.users.each do |user| %>
+                      <div class="mr-2">
+                        <% if user.profile_picture.attached? %>
+                          <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+                        <% elsif user.facebook_picture_url %>
+                          <%= image_tag user.facebook_picture_url, class: "avatar" %>
+                        <% else %>
+                          <i class="card-no-avatar far fa-user"></i>
+                        <% end %>
+                        <p class="avatar-name"><%= user.first_name %></p>
+                      </div>
+                    <% end %>
+                  </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+    </div>
   </div>
-
 </div>
+<% end %>
 
 <!-- Modal -->
 <div class="modal fade <%= 'show' if params["controller"] == 'events' %>"

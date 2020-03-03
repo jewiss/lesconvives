@@ -5,7 +5,6 @@
   justify-content: center;
 }
 
-
 .img-background {
  height: 300px;
  background-size: cover;
@@ -14,6 +13,10 @@
 
 .container-description {
   width: 100%;
+}
+
+.container-user-profile {
+   overflow: auto;
 }
 
 .row-content {
@@ -28,6 +31,27 @@
 
 .list-group i {
 	opacity: 0.5;
+}
+
+#user-address {
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0px 20px 0px 20px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#user-address a {
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+}
+
+#user-address .fa-edit {
+  font-size: 16px;
+  padding-left: 6px;
+  opacity: 0.8;
 }
 
 .btn-conv {
