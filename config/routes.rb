@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show] do
-    resources :addresses, only: %i[index new create edit update destroy]
+    resources :addresses, only: %i[index new create edit update destroy] do
+      post :create_from_coordinates, on: :collection
+    end
   end
 
   resources :events, only: %i[show new create] do

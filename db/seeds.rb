@@ -74,23 +74,36 @@ thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin
 puts 'addresses created'
 
 # Events
-after_gaudelet = Event.create!(date: Date.new(2020,1,24), hour: Time.new(19.00), name: 'Afterwork Gaudelet')
+after_gaudelet = Event.create!(date: Date.new(2020,02,24), hour: Time.new(19.00), name: 'Afterwork Gaudelet')
 SelectedRestaurant.create(restaurant: losamigos, event: after_gaudelet)
+lewagon_karaoke = Event.create!(date: Date.new(2020,02,18), hour: Time.new(20.00), name: 'Dinner & Karaoke')
+SelectedRestaurant.create(restaurant: losamigos, event: lewagon_karaoke)
+friends_lunch = Event.create!(date: Date.new(2020,02,13), hour: Time.new(12.30), name: 'Catch-up Lunch')
+SelectedRestaurant.create(restaurant: losamigos, event: friends_lunch)
 
-lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
-lewagon_karaoke = Event.create!(date: Date.parse('2020-02-13'), name: 'Karaoke Le Wagon')
-dinner_family = Event.create!(date: Date.parse('2020-02-22'), name: 'Family Dinner')
-demo_day = Event.create!(date: Date.parse('2020-03-06'), name: 'Demo Day Gaudelet')
-tinder_date = Event.create!(date: Date.parse('2020-03-08'), name: 'Tinder Date')
+# lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
+# dinner_family = Event.create!(date: Date.parse('2020-02-22'), name: 'Family Dinner')
+# demo_day = Event.create!(date: Date.parse('2020-03-06'), name: 'Demo Day Gaudelet')
+# tinder_date = Event.create!(date: Date.parse('2020-03-08'), name: 'Tinder Date')
 
-puts "events created"
+puts "3 Events created"
 
 # Participants
 romain1 = Participant.create!(event_id: after_gaudelet.id, user_id: romain.id, owner: true, address_id: romain_work.id)
 lucien1 = Participant.create!(event_id: after_gaudelet.id, user_id: lucien.id, owner: false, address_id: lucien_home.id)
-puts "2 participant created for 'After Gaudelet'"
+puts "2 participants created for 'After Gaudelet'"
 
-puts '6 events created'
+romain2 = Participant.create!(event_id: lewagon_karaoke.id, user_id: romain.id, owner: true, address_id: romain_work.id)
+antoine1 = Participant.create!(event_id: lewagon_karaoke.id, user_id: antoine.id, owner: false, address_id: antoine_work.id)
+thanh1 = Participant.create!(event_id: lewagon_karaoke.id, user_id: thanh.id, owner: false, address_id: thanh_work.id)
+puts "3 participants created for 'Dinner & Karaoke'"
+
+romain3 = Participant.create!(event_id: friends_lunch.id, user_id: romain.id, owner: true, address_id: romain_home.id)
+sandra1 = Participant.create!(event_id: friends_lunch.id, user_id: sandra.id, owner: false, address_id: sandra_work.id)
+eniko1 = Participant.create!(event_id: friends_lunch.id, user_id: eniko.id, owner: false, address_id: eniko_work.id)
+germain1 = Participant.create!(event_id: friends_lunch.id, user_id: germain.id, owner: false, address_id: germain_work.id)
+puts "4 participants created for 'Catch-up Lunch'"
+
 puts '-------'
 puts 'Seed finished'
 

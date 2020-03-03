@@ -1,4 +1,7 @@
-<ul>
-<li>Travel Time: <%= @directions[participant][:transit_duration] %></li>
-<li>Distance: <%= @directions[participant][:transit_distance] %></li>
-</ul>
+<div class="infowindow ">
+  <div style="text-align: center"><h5>Transit 🚇</h5></div>
+  <div style="display: flex; justify-content: space-between; font-size: 16px;">
+    <p>⏱️<%= @directions[participant][:transit_duration] %>   </p>
+    <p>📍<%= @directions[participant][:transit_distance] %></p>
+  </div>
+</div>

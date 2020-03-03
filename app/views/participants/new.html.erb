@@ -1,3 +1,4 @@
+<div style="height: 100vh;">
 <%= render 'shared/navbar' %>
 <div class="top-div d-flex justify-content-center">
   <div id="map" data-markers="<%= @markers.to_json %>" style="width: 100%;
@@ -15,7 +16,6 @@
         placeholder: "Search friends"
       %>
     <% end %>
-    <%= link_to "Let's Go!", restaurants_path(event: @event), class: "btn btn-lesconvives" %>
     </div>
   </div>
 
@@ -45,6 +45,7 @@
       </div>
     <% end %>
   </div>
-
+</div>
+    <%= link_to "Let's Go!", restaurants_path(event: @event), class: "btn btn-lesconvives" %>
 </div>
 

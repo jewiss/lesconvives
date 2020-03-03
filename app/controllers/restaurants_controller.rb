@@ -51,7 +51,7 @@ class RestaurantsController < ApplicationController
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
       if participant.user.profile_picture.attached?
-        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
+        icon = { url: ActionController::Base.helpers.cl_image_path(participant.user.profile_picture.key, transformation: [{radius: 'max'}]), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
       else
         icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
       end
@@ -101,11 +101,10 @@ class RestaurantsController < ApplicationController
       restaurants_serialized = open(url).read
       restaurants = JSON.parse(restaurants_serialized)["result"]
       if restaurants != nil
-        resto = Restaurant.find_or_create_by(google_api_id: restaurants["id"]) do |r|
-          r.opening_hours = restaurant["opening_hours"]["weekday_text"]
-          r.url = restaurant["website"]
-          r.phone = restaurant["formatted_phone_number"]
-        end
+        resto = Restaurant.find_or_create_by(google_api_id: restaurants["id"])
+        resto.opening_hours = restaurants["opening_hours"]["weekday_text"] if restaurants["opening_hours"]
+        resto.url = restaurants["website"]
+        resto.phone = restaurants["formatted_phone_number"]
         resto.save!
         resto
       end

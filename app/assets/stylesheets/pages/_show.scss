@@ -1,0 +1,56 @@
+.container-fluid-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.img-background {
+ height: 300px;
+ background-size: cover;
+ margin-top: 100px;
+ width: 100%;
+}
+
+.container-description {
+  width: 100%;
+}
+
+.row-content {
+  width: 100%;	
+}
+
+.list-group {
+	width: 100%;
+	text-align: center;
+	color: #333333;
+}
+
+.list-group i {
+	opacity: 0.5;
+}
+
+.btn-conv {
+	padding: 8px 16px;
+  border-radius: 16px;
+  transition: background 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  width: 300px;
+  text-align: center;
+  background-color: #1EDD88;
+  display: block;
+  color: white;
+  
+}
+
+#title-resto{
+	font-size: 24px;
+	 font-weight: bold;
+}
+
+.hours {
+
+}
