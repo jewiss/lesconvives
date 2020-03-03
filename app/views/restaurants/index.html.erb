@@ -9,7 +9,7 @@
 <div class="container">
   <div class="cards">
     <% @results_restaurants.each do |result|%>
-      <%= link_to restaurant_path(result) do %>
+      <%= link_to restaurant_path(result, event: params[:event]) do %>
 
       <% if result.photo.attached? %>
         <div class="card-trip mx-3">

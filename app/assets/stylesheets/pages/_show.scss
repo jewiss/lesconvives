@@ -24,10 +24,33 @@
 .list-group {
 	width: 100%;
 	text-align: center;
-	padding: 24px;
 	color: #333333;
 }
 
 .list-group i {
 	opacity: 0.5;
+}
+
+.btn-conv {
+	padding: 8px 16px;
+  border-radius: 16px;
+  transition: background 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  width: 300px;
+  text-align: center;
+  background-color: #1EDD88;
+  display: block;
+  color: white;
+  
+}
+
+#title-resto{
+	font-size: 24px;
+	 font-weight: bold;
+}
+
+.hours {
+
 }
