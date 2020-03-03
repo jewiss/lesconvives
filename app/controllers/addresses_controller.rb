@@ -49,6 +49,17 @@ class AddressesController < ApplicationController
     end
   end
 
+  def update_from_participants
+    @address = Address.find(params[:address])
+    @user = User.find(params[:user_id])
+    @user.addresses.each { |address| address.active = false }
+    @address.active = true
+    @participant = Participant.find(params[:participant])
+    @event = Event.find(params[:event])
+    @participant.update(address: @address)
+    redirect_to new_event_participant_path(@event)
+  end
+
   def destroy
     @address = Address.find(params[:id])
     @address.delete

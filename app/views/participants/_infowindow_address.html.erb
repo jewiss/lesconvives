@@ -1,0 +1,14 @@
+<div class="infowindow ">
+  <div style="text-align: center"> <%= "#{participant.user.first_name} is at #{participant.address.name}" %></div>
+  <div style="display: flex; justify-content: space-between; font-size: 16px;">
+   <p>Select an other address</p>
+    <% participant.user.addresses.each do |address| %>
+      <div>
+          <%= "#{address.name}" %>
+          <%= link_to update_from_participants_user_addresses_path(participant.user, address: address, event: participant.event, participant: participant), method: :patch, remote: true do %>
+              <i class="fas fa-map-marker-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+</div>
