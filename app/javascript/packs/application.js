@@ -41,7 +41,9 @@ document.addEventListener('turbolinks:load', () => {
   flatPicker();
   initAutocomplete();
   getUserLocation();
-  addLoader();
+  if (document.getElementById('loader')) {
+  	addLoader();
+  }
 });
 
 
