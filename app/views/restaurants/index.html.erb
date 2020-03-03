@@ -58,11 +58,11 @@
               <button type="button" class="close" id="btn-close-position" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <input type="hidden" name="/restaurants[food_category]" value="">
+              <input type="hidden" name="[food_category]" value="">
               <div class="wrapper">
                 <% food_category.each do |input| %>
                   <div class="form-check">
-                    <input class="form-check-input radio_buttons" type="radio" value="<%= input %>" name="/restaurants[food_category]" id="_restaurants_food_category_<%= input %>">
+                    <input class="form-check-input radio_buttons" type="radio" value="<%= input %>" name="[food_category]" id="_restaurants_food_category_<%= input %>">
                     <label class="form-check-label collection_radio_buttons" for="_restaurants_food_category_<%= input %>"><%= input %></label>
                   </div>
                 <% end %>
@@ -70,11 +70,11 @@
             </fieldset>
             <fieldset class="form-group radio_buttons restaurants_rating">
               <legend class="col-form-label pt-0">Rating's restaurant :</legend>
-              <input type="hidden" name="/restaurants[rating]" value="">
+              <input type="hidden" name="[rating]" value="">
               <div class="rating-form">
                 <% Restaurant::RATINGS.each do |input| %>
                   <div class="form-check">
-                    <input class="form-check-input radio_buttons" type="radio" value="<%= input %>" name="/restaurants[rating]" id="_restaurants_rating_<%= input %>">
+                    <input class="form-check-input radio_buttons" type="radio" value="<%= input %>" name="[rating]" id="_restaurants_rating_<%= input %>">
                     <label class="form-check-label collection_radio_buttons" for="_restaurants_rating_<%= input %>"><i class="fas fa-star"></i>
                     </label>
                   </div>
@@ -83,17 +83,17 @@
             </fieldset>
             <fieldset class="form-group radio_buttons restaurants_price_level">
             <legend class="col-form-label pt-0">Your budget :</legend>
-            <input type="hidden" name="/restaurants[price_level]" value="">
+            <input type="hidden" name="[price_level]" value="">
               <div class="price-form">
                 <% Restaurant::PRICE_LEVEL.each do |input| %>
                   <div class="form-check">
-                    <input class="form-check-input radio_buttons" type="radio" value="<%= input %>" name="/restaurants[price_level]" id="_restaurants_price_level_<%= input %>">
+                    <input class="form-check-input radio_buttons" type="radio" value="<%= input %>" name="[price_level]" id="_restaurants_price_level_<%= input %>">
                     <label class="form-check-label collection_radio_buttons" for="_restaurants_price_level_<%= input %>"><i class="fas fa-euro-sign"></i></label>
                   </div>
                 <% end %>
               </div>
             </fieldset>
-             <%= hidden_field_tag :event, @event.id %>
+            <%= hidden_field_tag :event, @event.id %>
             <%= submit_tag 'Apply filters' %>
           <% end %>
         </div>
