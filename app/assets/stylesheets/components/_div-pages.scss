@@ -9,7 +9,7 @@
 
 .top-div-user {
   font-size: 13px;
-  padding-top: 70px;
+  padding-top: 35px;
   font-size: 20px;
   color: white;
   font-weight: bolder;
@@ -57,14 +57,14 @@
 }
 
 .user-show-title {
-  margin-top: 25px;
+  border-bottom: 1px dashed white;
+  box-shadow: -8px 13px 5px -10px rgba(153,153,153,0.21);
   & p {
     padding-left: 10px;
     color: white;
     opacity: 0.9;
     font-weight: bolder;
     font-size: 20px;
-    // margin-bottom: 0px;
   }
 }
 
