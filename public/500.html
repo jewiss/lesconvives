@@ -4,7 +4,7 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
+  .rails-default-error-page-test {
     background-color: #fd746c;
     background: linear-gradient(to right, #ff9068, #fd746c)
     color: #2E2F30;
@@ -14,13 +14,13 @@
     height: 100vh;
   }
 
-  .rails-default-error-page div.dialog {
+  .rails-default-error-page-test div.dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
   }
 
-  .rails-default-error-page div.dialog > div {
+  .rails-default-error-page-test div.dialog > div {
     border-radius: 4px;
     border: white solid 4px;
     background-color: #142850;
@@ -28,7 +28,7 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
-  .rails-default-error-page h1 {
+  .rails-default-error-page-test h1 {
     font-size: 100%;
     color: white;
     line-height: 1.5em;
@@ -43,13 +43,13 @@
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class="rails-default-error-page-test">
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
       <h1>We're sorry, but our dev made a very bad mistake !</h1>
     </div>
-    <img src="image-500.png" alt="personne en colere" id="image-500">
+    <img src="/image-500.png" alt="personne en colere" id="image-500">
   </div>
 </body>
 </html>
