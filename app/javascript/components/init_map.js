@@ -15,6 +15,12 @@ const initMap = () => {
     } else {
       map.fitLatLngBounds(markers);
     }
+    const meetpoint = document.getElementById('meetpoint')
+    if (meetpoint) {
+      meetpoint.addEventListener('click', (event) => {
+        map.setZoom(16)
+      });
+    }
   }
 
 }
