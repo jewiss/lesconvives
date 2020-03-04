@@ -1,11 +1,7 @@
 .top-div {
   font-size: 13px;
-  // background-color: #FF8C67;
-  height: 50vh;
-  // & img {
-  //   border-radius: 50px;
-  // }
-  margin-top: 8px;
+  padding-top: 70px;
+  padding-bottom: 30px;
   font-size: 20px;
   color: white;
   font-weight: bolder;
@@ -25,6 +21,7 @@
 
 .bottom-div {
   position: relative;
+  text-align: center;
 }
 
 .addresses {
@@ -44,13 +41,11 @@
   background: #fd746c;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin-top: -60px;
-  padding-top: 30px;
+  min-height: 100vh;
 }
 
 .user-show-title {
-  margin-top: 40px;
-  overflow: auto;
+  margin-top: 25px;
   & p {
     padding-left: 10px;
     color: white;
