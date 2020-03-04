@@ -50,4 +50,18 @@
   opacity: 50%;
 }
 
+.restaurant-select {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 35px;
+  color: grey;
+  opacity: 0.8;
+}
+
+.fas.fa-check-circle.restaurant-select.active {
+  color: green;
+  opacity: 1;
+}
+
 

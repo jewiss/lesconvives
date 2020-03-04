@@ -23,7 +23,10 @@
 
       <% if result.photo.attached? %>
         <div class="card-trip mx-3">
-            <%= cl_image_tag result.photo.key , alt: "photo restaurant", crop: :fill %>
+          <div style="position: relative">
+              <%= cl_image_tag result.photo.key , alt: "photo restaurant", crop: :fill %>
+             <a href="javascript: void(0)"><i class="fas fa-check-circle restaurant-select" data-selected-restaurant="<%= result.id %>" data-selected-event="<%= @event.id %>" style="position: absolute;"></i></a>
+          </div>
           <div class="card-trip-infos">
             <div>
               <p> <%= result.name %> </p>
