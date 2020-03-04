@@ -95,11 +95,15 @@ estelle_work = Address.create!(name: 'Home', full_address: '26 rue Beautreillis,
 puts 'addresses created'
 
 # Events
-after_gaudelet = Event.create!(date: Date.new(2020,02,24), hour: Time.new(19.00), name: 'Afterwork Gaudelet')
+d1 = Date.new(2020,02,24)
+d2 = Date.new(2020,02,18)
+d3 = Date.new(2020,02,13)
+
+after_gaudelet = Event.create!(date: Date.new(2020,02,24), hour: Time.new(d1.year, d1.month, d1.day, 20, 00).asctime.in_time_zone("Paris"), name: 'Afterwork Gaudelet')
 SelectedRestaurant.create(restaurant: losamigos, event: after_gaudelet)
-lewagon_karaoke = Event.create!(date: Date.new(2020,02,18), hour: Time.new(20.00), name: 'Dinner & Karaoke')
+lewagon_karaoke = Event.create!(date: Date.new(2020,02,18), hour: Time.new(d2.year, d2.month, d2.day, 21, 00).asctime.in_time_zone("Paris"), name: 'Dinner & Karaoke')
 SelectedRestaurant.create(restaurant: losamigos, event: lewagon_karaoke)
-friends_lunch = Event.create!(date: Date.new(2020,02,13), hour: Time.new(12.30), name: 'Catch-up Lunch')
+friends_lunch = Event.create!(date: Date.new(2020,02,13), hour: Time.new(d3.year, d3.month, d3.day, 12, 30).asctime.in_time_zone("Paris"), name: 'Catch-up Lunch')
 SelectedRestaurant.create(restaurant: losamigos, event: friends_lunch)
 
 # lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
