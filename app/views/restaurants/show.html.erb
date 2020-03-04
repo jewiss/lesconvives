@@ -33,6 +33,9 @@
         <% @restaurant.rating.times do%>
           <i class="fas fa-star"></i>
         <% end %>
+        <% (5 - @restaurant.rating).times do %>
+          <i class="fas fa-star" id="level-missing"></i>
+        <% end %>
       </li>
     <% end %>
 
@@ -40,6 +43,9 @@
       <li class="list-group-item">
         <% @restaurant.price_level.to_i.times do %>
           <i class="fas fa-euro-sign"></i>
+        <% end %>
+        <% (5 - @restaurant.price_level.to_i).times do %>
+          <i class="fas fa-euro-sign" id="level-missing"></i>
         <% end %>
       </li>
     <% end %>
