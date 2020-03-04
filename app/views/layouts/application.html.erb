@@ -9,7 +9,12 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_MAPS_TOKEN']}" %>
-
+    <meta property="og:title" content="Les Convives" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.lesconvives.com" />
+    <meta property="og:image" content="../assets/images/lesconvives" />
+    <meta property="og:description" content="Find the best location to meet your friends" />
+    <meta property="og:site_name" content="Les Convives" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable"  content="yes">
