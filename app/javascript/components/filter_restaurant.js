@@ -20,9 +20,7 @@ const filterRating = () => {
 const filterPrice = () => {
   const priceLabels = document.querySelectorAll('.price-form label')
   priceLabels.forEach((label) => {
-
-      label.classList.remove("active");
-
+    label.classList.remove("active");
     label.addEventListener('click', (event) => {
       const priceArray = Array.from(priceLabels)
       const priceIndex = priceArray.indexOf(event.currentTarget);
@@ -38,4 +36,16 @@ const filterPrice = () => {
   });
 };
 
-export { filterRating, filterPrice };
+const filterFood = () => {
+  const radioButtons = document.querySelectorAll('.radio-buttons-food');
+  radioButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      if (event.currentTarget.previousElementSibling.checked === true) {
+        event.currentTarget.previousElementSibling.checked = false;
+        event.preventDefault();
+      };
+    });
+  });
+};
+
+export { filterRating, filterPrice, filterFood };
