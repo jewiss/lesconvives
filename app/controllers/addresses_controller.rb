@@ -55,6 +55,8 @@ class AddressesController < ApplicationController
     @participant = Participant.find(params[:participant])
     @event = Event.find(params[:event])
     @participant.update(address: @address)
+    @address.update!(active: true)
+    @user.addresses.where.not(id: params[:address]).update_all(active: false)
     redirect_to new_event_participant_path(@event)
   end
 

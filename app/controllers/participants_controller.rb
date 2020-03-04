@@ -25,7 +25,7 @@ class ParticipantsController < ApplicationController
 
   def create
     @participant = Participant.new(event_id: params[:event_id], user_id: params[:user])
-    @participant.address = @participant.user.addresses.find_by(name: 'Home')
+    @participant.address = @participant.user.addresses.find_by(active: true)
     @participant.save
     redirect_to new_event_participant_path
   end
