@@ -53,7 +53,7 @@
             <div class="card-product">
               <div class="card-image-and-date" style="position: relative;">
                 <%= cl_image_tag event.selected_restaurants.first.restaurant.photo.key, class: "card-illustration" %>
-                <p id="event-date"> <%= event.date %></p>
+                <p id="event-date"> <%= event.date.strftime("%d %^b") %></p>
               </div>
               <div class="card-product-infos">
                 <h2> <%= event.name %></h2>
