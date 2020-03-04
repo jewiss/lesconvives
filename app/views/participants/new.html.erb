@@ -21,28 +21,30 @@
 
   <div class="friend-cards pt-6">
     <% @users.each do |user| %>
-      <div class="card-avatar-add">
-        <% if user.profile_picture.attached? %>
-          <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
-        <% elsif user.facebook_picture_url %>
-          <%= image_tag user.facebook_picture_url, class: "avatar" %>
-        <% else %>
-          <i class="card-no-avatar far fa-user"></i>
-        <% end %>
-        <p class="avatar-name">
-          <%= user.first_name %>
-        </p>
-        <% participant = Participant.find_by(user: user, event: @event) %>
-        <% if participant %>
-          <%= link_to participant_path(participant), method: :delete, class: "add-button" do %>
-            <i class="fas fa-minus-circle btn-create"></i>
+      <% unless user.addresses.empty? %>
+        <div class="card-avatar-add">
+          <% if user.profile_picture.attached? %>
+            <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+          <% elsif user.facebook_picture_url %>
+            <%= image_tag user.facebook_picture_url, class: "avatar" %>
+          <% else %>
+            <i class="card-no-avatar far fa-user"></i>
           <% end %>
-        <% else  %>
-          <%= link_to event_participants_path(@event, user: user.id), method: :post, class: "add-button" do %>
-            <i class="fas fa-plus-circle btn-create"> </i>
+          <p class="avatar-name">
+            <%= user.first_name %>
+          </p>
+          <% participant = Participant.find_by(user: user, event: @event) %>
+          <% if participant %>
+            <%= link_to participant_path(participant), method: :delete, class: "add-button" do %>
+              <i class="fas fa-minus-circle btn-create"></i>
+            <% end %>
+          <% else  %>
+            <%= link_to event_participants_path(@event, user: user.id), method: :post, class: "add-button" do %>
+              <i class="fas fa-plus-circle btn-create"> </i>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

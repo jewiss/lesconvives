@@ -21,7 +21,9 @@
       <%= simple_form_for @address, url: user_addresses_path(@user), html: { method: :post } do |f| %>
         <%= f.input :full_address %>
         <%= f.input  :name, collection: ["Home", "Work", "Other"] %>
-        <%= f.input :active, as: :boolean, label: "Choose as default address" %>
+        <div class="container ml-2">
+          <%= f.input :active, label: "Select as default address", as: :boolean %>
+        </div>
         <%= f.submit class: "btn btn-light" %>
       <% end %>
     </div>

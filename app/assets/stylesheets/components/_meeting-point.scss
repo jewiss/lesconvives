@@ -2,9 +2,10 @@
   position: relative;
   border-radius: 16px;
   bottom: 20px;
-  background-color: #f1f3f4;
   width: fit-content;
   margin: 0px auto ;
+  background-color: #fd746c;
+  background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 

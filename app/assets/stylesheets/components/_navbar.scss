@@ -1,12 +1,10 @@
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
-  background-color: transparent;
+  background-color: transparent !important;
   color: white;
-}
-
-.navbar-lewagon .fa-compass {
-  color: rgba(0, 0, 0, 0.4);
-}
+  padding: 15px;
+ }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -16,18 +14,41 @@
   width: 40px;
 }
 
-.navbar-brand {
-  color: white;
-}
-
-.fa-home {
-  color: rgba(0,0,0,0.6);
-}
-
-.navbar-toggler {
-  border: none;
-}
-
 .teammate {
-  width: 32px;
+	width: 32px;
 }
+
+.nav-item {
+	list-style-type: none;
+}
+
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background-color: transparent;
+//   color: white;
+// }
+
+// .navbar-lewagon .fa-compass {
+//   color: rgba(0, 0, 0, 0.4);
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
+// .navbar-brand {
+//   color: white;
+// }
+
+// .fa-home {
+//   color: rgba(0,0,0,0.6);
+// }
+
+// .navbar-toggler {
+//   border: none;
+// }
+
