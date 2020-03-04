@@ -1,6 +1,8 @@
 .wrapper{
   display: grid;
   grid-template-columns: 80px 80px 80px;
+  justify-content: center!important;
+  margin: 0 auto;
 }
 
 .form-check {
@@ -23,13 +25,14 @@
   box-shadow: 0px 0px 5px -1px;
 }
 .restaurants_food_category input:checked + label {
-  background-color: black;
+  background-color: #142850;
   color: white;
 }
 
 // Rating mise en forme
 .rating-form {
   display: flex;
+  justify-content: center!important;
 }
 
 .restaurants_rating input {
@@ -41,7 +44,7 @@
   opacity: 0.2;
   font-size: 30px;
   &.active {
-    color: green;
+    color: #142850;
     opacity: 1;
   }
 }
@@ -54,6 +57,7 @@
 //Price level mise en forme
 .price-form {
   display: flex;
+  justify-content: center!important;
 }
 
 .restaurants_price_level input {
@@ -65,7 +69,7 @@
   opacity: 0.2;
   font-size: 30px;
     &.active {
-    color: green;
+    color: #142850;
     opacity: 1;
   }
 }
@@ -73,3 +77,10 @@
 .restaurants_price_level input:checked + label {
   opacity: 1;
 }
+
+.modal-header {
+  text-align: center;
+  margin: 0 auto;
+}
+
+

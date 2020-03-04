@@ -1,7 +1,7 @@
 .cards {
   padding-top: 2%;
   padding-bottom: 2%;
-  position: absolute;
+  // position: absolute;
   margin-top: -20px;
   left: 0px;
 }
@@ -9,25 +9,31 @@
 .card-trip {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  border-radius: 5px;
 }
 
-.card-trip > img {
+.card-trip img {
   height: 150px;
   width: 100%;
   object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card-trip h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color: black;
 }
 
 .card-trip p {
+  color: black;
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  text-decoration: none;
 }
 
 
@@ -36,11 +42,26 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  color: black;
 }
 
 
 #level-missing {
   opacity: 50%;
+}
+
+.restaurant-select {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 35px;
+  color: grey;
+  opacity: 0.8;
+}
+
+.fas.fa-check-circle.restaurant-select.active {
+  color: green;
+  opacity: 1;
 }
 
 
