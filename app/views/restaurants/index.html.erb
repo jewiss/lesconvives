@@ -46,7 +46,11 @@
       <% end %>
     <% end %>
   </div>
+<div>
+    <%= link_to "Back to Friends List", restaurants_path(event: @event), class: "btn btn-lesconvives", id:"loader" %>
 </div>
+</div>
+
 
 <!-- Modal filtre -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -57,7 +61,7 @@
           <%= form_tag restaurants_path, method: :get do %>
             <% food_category = Restaurant::CATEGORY %>
             <fieldset class="form-group radio_buttons restaurants_food_category">
-              <legend class="col-form-label pt-0">You want to eat :</legend>
+              <legend class="col-form-label pt-0">Food Category</legend>
               <button type="button" class="close" id="btn-close-position" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -72,7 +76,7 @@
               </div>
             </fieldset>
             <fieldset class="form-group radio_buttons restaurants_rating">
-              <legend class="col-form-label pt-0">Rating's restaurant :</legend>
+              <legend class="col-form-label pt-0">Restaurant Rating</legend>
               <input type="hidden" name="[rating]" value="">
               <div class="rating-form">
                 <% Restaurant::RATINGS.each do |input| %>
@@ -85,7 +89,7 @@
               </div>
             </fieldset>
             <fieldset class="form-group radio_buttons restaurants_price_level">
-            <legend class="col-form-label pt-0">Your budget :</legend>
+            <legend class="col-form-label pt-0">Price Range</legend>
             <input type="hidden" name="[price_level]" value="">
               <div class="price-form">
                 <% Restaurant::PRICE_LEVEL.each do |input| %>
@@ -97,11 +101,13 @@
               </div>
             </fieldset>
             <%= hidden_field_tag :event, @event.id %>
-            <%= submit_tag 'Apply filters' %>
+            <%= submit_tag 'Apply filters', class: "btn-lesconvives"%>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 
