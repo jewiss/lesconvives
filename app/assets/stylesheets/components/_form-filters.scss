@@ -25,7 +25,7 @@
   box-shadow: 0px 0px 5px -1px;
 }
 .restaurants_food_category input:checked + label {
-  background-color: green;
+  background-color: #142850;
   color: white;
 }
 
@@ -44,7 +44,7 @@
   opacity: 0.2;
   font-size: 30px;
   &.active {
-    color: green;
+    color: #142850;
     opacity: 1;
   }
 }
@@ -69,7 +69,7 @@
   opacity: 0.2;
   font-size: 30px;
     &.active {
-    color: green;
+    color: #142850;
     opacity: 1;
   }
 }
