@@ -32,6 +32,7 @@ import { flatPicker } from "../plugins/flatpickr";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { getUserLocation } from "../components/get_geolocation";
 import { addLoader } from "../components/loader";
+import { selectRestaurant } from "../components/select_restaurant";
 import { filterFood } from '../components/filter_restaurant';
 
 document.addEventListener('turbolinks:load', () => {
@@ -46,6 +47,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.getElementById('loader')) {
   	addLoader();
   }
+  selectRestaurant();
 });
 
 

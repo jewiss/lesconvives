@@ -1,17 +1,17 @@
 class AddressesController < ApplicationController
 
   def new
-    @user = current_user
+    @user = User.find(params[:user_id])
     @address = Address.new()
   end
 
   def create
     @address = Address.new(params_address)
-    if @address.active = true
-      current_user.addresses.each { |address| address.active = false }
-      @address.active = true
-    end
+    @address.user = User.find(params[:user_id])
     if @address.save
+      if @address.active == true
+        current_user.addresses.where.not(id: params[:id]).update_all(active: false)
+      end
       redirect_to root_path
     else
       render :new
@@ -24,9 +24,10 @@ class AddressesController < ApplicationController
     results = Geocoder.search([@address.latitude, @address.longitude])
     @address.full_address = results.first.address
     @address.name = "Other"
-    current_user.addresses.each { |address| address.active = false }
     @address.active = true
-    @address.save!
+    if @address.save
+      current_user.addresses.where.not(id: params[:id]).update_all(active: false)
+    end
     redirect_to root_path
   end
 
@@ -38,11 +39,10 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    if @address.active = true
-      current_user.addresses.each { |address| address.active = false }
-      @address.active = true
-    end
     if @address.update(params_address)
+      if @address.active == true
+        current_user.addresses.where.not(id: params[:id]).update_all(active: false)
+      end
       redirect_to root_path
     else
       render :new
@@ -52,8 +52,6 @@ class AddressesController < ApplicationController
   def update_from_participants
     @address = Address.find(params[:address])
     @user = User.find(params[:user_id])
-    @user.addresses.each { |address| address.active = false }
-    @address.active = true
     @participant = Participant.find(params[:participant])
     @event = Event.find(params[:event])
     @participant.update(address: @address)
