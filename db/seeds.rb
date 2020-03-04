@@ -75,8 +75,8 @@ puts "-------"
 puts 'restaurant "Los Amigos" created'
 
 # Addresses
-romain_home = Address.create!(name: 'Home', full_address: '74 rue mazarine, 75006 Paris, France', user_id: romain.id, active: true)
-romain_work = Address.create!(name: 'Work', full_address: '2 bis Avenue Foch, 75116 Paris, France', user_id: romain.id)
+romain_home = Address.create!(name: 'Home', full_address: '74 rue Mazarine, 75006 Paris', user_id: romain.id, active: true)
+romain_work = Address.create!(name: 'Work', full_address: '2 bis Avenue Foch, 75116 Paris', user_id: romain.id)
 lucien_home = Address.create!(name: 'Home', full_address: '14 Rue Crespin du Gast, 75011 Paris, France', user_id: lucien.id, active: true)
 lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 75001 Paris, France', user_id: lucien.id)
 sovana_home = Address.create!(name: 'Home', full_address: '5 Rue Descartes, 75005 Paris, France', user_id: sovana.id, active: true)

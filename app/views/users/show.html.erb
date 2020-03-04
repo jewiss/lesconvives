@@ -3,10 +3,10 @@
 <div class="d-flex flex-column user-show">
 
 <!-- top div -->
-  <div class=" top-div d-flex flex-column justify-content-center align-items-center">
+  <div class=" top-div-user d-flex flex-column justify-content-center align-items-center">
     <div>
       <% if current_user.profile_picture.attached? %>
-        <%= cl_image_tag (current_user.profile_picture.key), height: 100, width: 100, crop: :fill; %>
+        <%= cl_image_tag (current_user.profile_picture.key), height: 120, width: 120, crop: :fill, class: "user-show-avatar" %>
       <% elsif @facebook_photo %>
         <%= image_tag @facebook_photo, alt: "Picture of #{@user.first_name}", width: 100, height: 100 %>
       <% else %>
@@ -19,12 +19,12 @@
         <% if @user.addresses.find_by(active: true) %>
           <%= link_to user_addresses_path(@user) do %>
             <%= @user.addresses.find_by(active: true).full_address %>
-            <i class="far fa-edit"></i>
+<!--             <i class="far fa-edit"></i> -->
           <% end %>
         <% elsif @user.addresses.first %>
           <%= link_to user_addresses_path(@user) do %>
             <%= @user.addresses.first.full_address %>
-            <i class="far fa-edit"></i>
+<!--             <i class="far fa-edit"></i> -->
           <% end %>
         <% else %>
           <%= link_to new_user_address_path(@user) do %>
@@ -67,7 +67,6 @@
                         <% else %>
                           <i class="card-no-avatar far fa-user"></i>
                         <% end %>
-                        <p class="avatar-name"><%= user.first_name %></p>
                       </div>
                     <% end %>
                   </div>
