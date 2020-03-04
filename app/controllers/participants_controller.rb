@@ -12,7 +12,7 @@ class ParticipantsController < ApplicationController
       coordinates = []
       coordinates << participant.address.latitude.to_f
       coordinates << participant.address.longitude.to_f
-      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon }
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon, infoWindow: { content: render_to_string(partial: "/participants/infowindow_address", locals: { participant: participant }) } }
     end
 
     if params[:query].present?
