@@ -1,4 +1,28 @@
 .navbar-lewagon {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent !important;
+  color: white;
+  padding: 15px;
+ }
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.teammate {
+	width: 32px;
+}
+
+.nav-item {
+	list-style-type: none;
+}
+
+/*.navbar-lewagon {
   justify-content: space-between;
   background-color: transparent;
   color: white;
@@ -27,3 +51,4 @@
 .navbar-toggler {
   border: none;
 }
+*/
