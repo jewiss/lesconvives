@@ -4,8 +4,11 @@ const initMap = () => {
 
   const mapElement = document.getElementById('map');
   if (mapElement) { // don't try to build a map if there's no div#map to inject in
-    const map = new GMaps({ el: '#map', lat: 0, lng: 0, disableDefaultUI: true });
     const markers = JSON.parse(mapElement.dataset.markers);
+    const center = markers[0];
+    const lat = center? center.lat : 0;
+    const lng = center? center.lng : 0;
+    const map = new GMaps({ el: '#map', lat: lat, lng: lng, disableDefaultUI: true });
     map.addMarkers(markers);
     if (markers.length === 0) {
       map.setZoom(2);
@@ -13,10 +16,9 @@ const initMap = () => {
       map.setCenter(markers[0].lat, markers[0].lng);
       map.setZoom(14);
     } else if (window.location.hash == "#zoom") {
-      map.setCenter(markers[0].lat, markers[0].lng);
-      debugger
-      map.setZoom(16)
-      console.log(map.map.zoom)
+      map.setCenter(markers[0].lat, markers[0].lng, () => {
+        map.setZoom(16)
+      });
     } else {
       map.fitLatLngBounds(markers);
     };
