@@ -76,23 +76,30 @@ puts 'restaurant "Los Amigos" created'
 
 # Addresses
 romain_home = Address.create!(name: 'Home', full_address: '74 rue Mazarine, 75006 Paris', user_id: romain.id, active: true)
-romain_work = Address.create!(name: 'Work', full_address: '2 bis Avenue Foch, 75116 Paris', user_id: romain.id)
+romain_work = Address.create!(name: 'Work', full_address: '16 Villa Gaudelet, 75011 Paris', user_id: romain.id, active: false)
 lucien_home = Address.create!(name: 'Home', full_address: '14 Rue Crespin du Gast, 75011 Paris, France', user_id: lucien.id, active: true)
-lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 75001 Paris, France', user_id: lucien.id)
+lucien_work = Address.create!(name: 'Work', full_address: '35 Rue Sainte-Anne, 75001 Paris, France', user_id: lucien.id, active: false)
 sovana_home = Address.create!(name: 'Home', full_address: '5 Rue Descartes, 75005 Paris, France', user_id: sovana.id, active: true)
-sovana_home = Address.create!(name: 'Home', full_address: '1 Rue Clovis, 75005 Paris, France', user_id: sovana.id)
-tim_home = Address.create!(name: 'Home', full_address: '2 Rue Lisfranc, 75020 Paris, France', user_id: tim.id, active: true)
-tim_home = Address.create!(name: 'Home', full_address: '9 Rue Belgrand, 75020 Paris, France', user_id: tim.id)
+sovana_work = Address.create!(name: 'Work', full_address: '1 Rue Clovis, 75005 Paris, France', user_id: sovana.id, active: false)
+tim_home = Address.create!(name: 'Home', full_address: '2 Rue Lisfranc, 75020 Paris, France', user_id: tim.id, active: false)
+tim_work = Address.create!(name: 'Work', full_address: '9 Rue Belgrand, 75020 Paris, France', user_id: tim.id, active: true)
 
-sandra_work = Address.create!(name: 'Home', full_address: '3 rue oberkampf, 75011, Paris, France', user_id: sandra.id, active: true)
-eniko_work = Address.create!(name: 'Home', full_address: '37 Quai Branly, 75007 Paris, France', user_id: eniko.id, active: true)
-antoine_work = Address.create!(name: 'Home', full_address: '171 Rue de la Croix Nivert, 75015 Paris, France', user_id: antoine.id, active: true)
-germain_work = Address.create!(name: 'Home', full_address: '3 rue des acacias, 75017, Paris, France', user_id: germain.id, active: true)
-thanh_work = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin, 75013, Paris, France', user_id: thanh.id, active: true)
-renaud_work = Address.create!(name: 'Home', full_address: '10 rue Béranger, 75003, Paris, France', user_id: renaud.id, active: true)
-ambre_work = Address.create!(name: 'Home', full_address: '15 rue René Boulanger, 75010, Paris, France', user_id: ambre.id, active: true)
-estelle_work = Address.create!(name: 'Home', full_address: '26 rue Beautreillis, 75004, Paris, France', user_id: estelle.id, active: true)
+sandra_home = Address.create!(name: 'Home', full_address: '3 rue oberkampf, 75011, Paris, France', user_id: sandra.id, active: true)
+sandra_work = Address.create!(name: 'Work', full_address: '', user_id: sandra.id, active: false)
+
+eniko_home = Address.create!(name: 'Home', full_address: '11 rue brillat-savarin, 75013, Paris, France', user_id: eniko.id, active: false)
+eniko_work = Address.create!(name: 'Work', full_address: '', user_id: eniko.id, active: true)
+
+antoine_home = Address.create!(name: 'Home', full_address: '171 Rue de la Croix Nivert, 75015 Paris, France', user_id: antoine.id, active: true)
+antoine_work = Address.create!(name: 'Work', full_address: '', user_id: antoine.id, active: false)
+
+germain_home = Address.create!(name: 'Home', full_address: '3 rue des acacias, 75017, Paris, France', user_id: germain.id, active: true)
+thanh_home = Address.create!(name: 'Home', full_address: '37 Quai Branly, 75007 Paris, France', user_id: thanh.id, active: true)
+renaud_home = Address.create!(name: 'Home', full_address: '10 rue Béranger, 75003, Paris, France', user_id: renaud.id, active: true)
+ambre_home = Address.create!(name: 'Home', full_address: '15 rue René Boulanger, 75010, Paris, France', user_id: ambre.id, active: true)
+estelle_home = Address.create!(name: 'Home', full_address: '26 rue Beautreillis, 75004, Paris, France', user_id: estelle.id, active: true)
 puts 'addresses created'
+
 
 # Events
 d1 = Date.new(2020,02,24)
