@@ -83,4 +83,25 @@
   margin: 0 auto;
 }
 
+.form-control {
+  border-radius: 20px;
+}
+
+.modal-content {
+  border-radius: 30px;
+}
+
+.modal-footer {
+  justify-content: center;
+  border: none;
+}
+
+.modal-header {
+  border: none;
+  padding: 0px;
+}
+
+.modal-header .close {
+  margin: auto;
+}
 

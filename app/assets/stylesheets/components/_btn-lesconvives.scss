@@ -1,7 +1,7 @@
 .btn-lesconvives {
   font-size: 20px;
   padding: 8px 16px;
-  border-radius: 16px;
+  border-radius: 34px;
   background-color: #142850;
   transition: background 0.3s ease;
   font-weight: bold;
@@ -14,7 +14,7 @@
 }
 
 .btn-lesconvives:focus {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .fa-plus-circle {
