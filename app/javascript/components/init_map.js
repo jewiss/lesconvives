@@ -18,11 +18,17 @@ const initMap = () => {
     const meetpoint = document.getElementById('meetpoint')
     if (meetpoint) {
       meetpoint.addEventListener('click', (event) => {
-        map.setZoom(16)
+        map.setCenter(markers[0].lat, markers[0].lng);
+        if (map.map.zoom === 16) {
+          map.setZoom(12)
+        } else {
+          map.setZoom(16)
+        };
+
+      console.log(map.map.zoom)
       });
     }
   }
-
 }
 
 export { initMap };
