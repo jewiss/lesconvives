@@ -46,10 +46,9 @@ class RestaurantsController < ApplicationController
           photo_key: restaurant.photo.key,
           price_level: restaurant.price_level.to_i,
           event: params[:event],
-          food_category: restaurant.food_category
-        }
-
-        # icon: ActionController::Base.helpers.asset_url('restaurant.png')
+          # food_category: restaurant.food_category
+        },
+        icon: ActionController::Base.helpers.asset_url('resto_marker.png')
         #infoWindow: { content: render_to_string(partial: "/restaurants/infowindow", locals: { restaurant: restaurant }) }
       }
     end
@@ -72,6 +71,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @event = Event.find(params[:event])
   end
 
   private
