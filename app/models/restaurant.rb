@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, :reverse_geocode, if: :will_save_change_to_address?
-  CATEGORY = %w[Any American Chinese French Greek Indian Italian Japanese Korean Mexican Spanish Thai]
+  CATEGORY = %w[American Chinese French Greek Indian Italian Japanese Korean Lebanese Mexican Spanish Thai]
   RATINGS = [ 1, 2, 3, 4, 5 ]
   PRICE_LEVEL = [ 1, 2, 3, 4, 5 ]
 end

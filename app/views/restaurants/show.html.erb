@@ -1,8 +1,8 @@
 <div>
   <%= link_to restaurants_path(event: params[:event]) do%>
-	  <i class="fas fa-chevron-left", style="color: #142850; font-size: 32px; margin-left: 10px; margin-top: 10px;"></i>
+	  <i class="fas fa-chevron-left"></i>
 	<% end %>
-</div>
+</div>  
 <div class="img-background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @restaurant.photo.key , alt: "photo restaurant" %>)"></div>
 
 <!-- card description -->
@@ -13,14 +13,14 @@
       <%= @restaurant.short_address %>
     </li>
     <% if @restaurant.url %>
-      <li class="list-group-item">
+      <li class="list-group-item" class="restaurant-url">
         <i class="fas fa-globe"></i>
         <%= link_to @restaurant.url, "#{@restaurant.url}", :target =>"_blank" %>
       </li>
     <% end %>
     <% if @restaurant.opening_hours %>
       <li class="list-group-item">
-        <i class="fas fa-hourglass-start"></i>
+        <p class="hourglass"><i class="fas fa-hourglass-start"></i> Opening Hours </p>
         <% array = JSON.parse(@restaurant.opening_hours) %>
         <% array.each do |hour| %>
           <p class="hours"><%= hour %></p>
@@ -56,6 +56,8 @@
   </ul>
 
 <div style="margin-top: 15px; display:flex; justify-content: center; text-align: center;">
-  <a class="btn-lesconvives" href="tel:<%= @restaurant.phone %>">Make a Reservation  <i class="fas fa-phone" style="font-size: 25px;"></i></a>
+    <%= link_to @restaurant.phone ? "tel:#{@restaurant.phone}" : @restaurant.url, class: "btn-lesconvives cta-call", target: "_blank" do %>
+      Make a Reservation  <i class="fas <%= @restaurant.phone ? "fa-phone" : "fa-globe" %>"></i>
+    <% end %>
 </div>
 

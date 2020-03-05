@@ -5,8 +5,9 @@
     height: 80vh;"></div>
 </div>
 
+
 <div class="bottom-div">
-  <div class="btn-middle">
+  <div class="btn-middle search-friend">
     <%= form_tag new_event_participant_path(@event), method: :get do %>
     <div class="d-flex justify-content-center">
       <%= text_field_tag :query,
@@ -35,11 +36,11 @@
           </p>
           <% participant = Participant.find_by(user: user, event: @event) %>
           <% if participant %>
-            <%= link_to participant_path(participant), method: :delete, class: "add-button" do %>
+            <%= link_to participant_path(participant), method: :delete, remote: true, class: "add-button" do %>
               <i class="fas fa-minus-circle btn-create"></i>
             <% end %>
           <% else  %>
-            <%= link_to event_participants_path(@event, user: user.id), method: :post, class: "add-button" do %>
+            <%= link_to event_participants_path(@event, user: user.id), method: :post, remote: true, class: "add-button" do %>
               <i class="fas fa-plus-circle btn-create"> </i>
             <% end %>
           <% end %>
