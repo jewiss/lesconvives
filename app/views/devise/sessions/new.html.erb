@@ -1,8 +1,6 @@
-<div class="container", style="color: white; height: 100vh;">
+<div class="container container-home" style="color: white; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
   <div class="row justify-content-center">
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1528605248644-14dd04022da1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
-      background-size: cover; background-repeat: no-repeat; background-position: center center">
-
+    <div class="banner">
           <div class="sign-in col-8 offset-2" style="background-color: transparent">
             <h2><bold>Log in</bold></h2>
               <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
