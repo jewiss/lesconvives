@@ -44,7 +44,9 @@ class RestaurantsController < ApplicationController
           rating: restaurant.rating,
           short_address: restaurant.short_address,
           photo_key: restaurant.photo.key,
-          price_level: restaurant.price_level.to_i
+          price_level: restaurant.price_level.to_i,
+          event: params[:event],
+          food_category: restaurant.food_category
         }
 
         # icon: ActionController::Base.helpers.asset_url('restaurant.png')

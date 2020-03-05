@@ -2,7 +2,7 @@
   <%= link_to restaurants_path(event: params[:event]) do%>
 	  <i class="fas fa-chevron-left"></i>
 	<% end %>
-</div>  
+</div>
 <div class="img-background" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @restaurant.photo.key , alt: "photo restaurant" %>)"></div>
 
 <!-- card description -->
