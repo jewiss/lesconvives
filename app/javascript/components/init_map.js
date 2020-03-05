@@ -36,13 +36,13 @@ const initMap = () => {
         element.style.display = "block";
         console.log(marker.details);
         const restaurantName = marker.details.name;
-        document.querySelector(".link-show-resto").href=`/restaurants/${marker.details.id}`
+        document.querySelector(".link-show-resto").href=`/restaurants/${marker.details.id}?event=${marker.details.event}`
         document.querySelector(".resto-img").src = `http://res.cloudinary.com/dykaopgu0/image/upload/c_fill/${marker.details.photo_key}`
         document.querySelector(".resto-name").innerText = `${restaurantName}`;
         const ratingIcon = '<i class="fas fa-star"></i>'
         const ratingIconMissing = '<i class="fas fa-star" id="level-missing"></i>'
         const rating = (ratingIcon.repeat(marker.details.rating) + ratingIconMissing.repeat(5 - marker.details.rating));
-        document.querySelector(".resto-rating").innerHTML = `${rating}`;
+        document.querySelector(".resto-rating").innerHTML = `${marker.details.food_category}  ${rating}`;
         document.querySelector(".resto-short-address").innerText = `${marker.details.short_address}`;
         const sym = "€"
         const pricing = sym.repeat(marker.details.price_level)
