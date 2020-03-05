@@ -34,7 +34,6 @@ import { getUserLocation } from "../components/get_geolocation";
 import { addLoader } from "../components/loader";
 import { selectRestaurant } from "../components/select_restaurant";
 import { filterFood } from '../components/filter_restaurant';
-// import { loadParticipants } from '../components/load_participants';
 
 document.addEventListener('turbolinks:load', () => {
   filterRating();
@@ -49,7 +48,6 @@ document.addEventListener('turbolinks:load', () => {
   	addLoader();
   }
   selectRestaurant();
-  // loadParticipants();
 });
 
 
