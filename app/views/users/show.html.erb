@@ -96,9 +96,11 @@
       </div>
       <%= simple_form_for(@event) do |f| %>
         <div class="modal-body">
-            <%= f.input :name, label: "What would you like to call it ?" %>
-            <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "When is it happening ?"%>
-            <%= f.input :hour, as: :string, input_html: {class: "hourpicker"}, label: "At what time ?" %>
+            <%= f.input :name, label: "Name it !" %>
+            <div class="d-flex justify-content-between">
+              <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "When is it ?"%>
+              <%= f.input :hour, as: :string, input_html: {class: "hourpicker"}, label: "At what time ?" %>
+            </div>
         </div>
         <div class="modal-footer">
         <%= f.submit class: "btn-lesconvives" %>
