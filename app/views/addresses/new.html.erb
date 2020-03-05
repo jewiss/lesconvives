@@ -10,7 +10,7 @@
         <%= simple_form_for @address, url: create_from_coordinates_user_addresses_path(@user), html: { method: :post, id: "geolocation-form" } do |f| %>
           <%= f.input :latitude, as: :hidden %>
           <%= f.input :longitude, as: :hidden %>
-          <%= f.submit "Create new address from my position", class: "btn btn-success", id: "my-position" %>
+          <%= f.submit "My current position", class: "btn btn-success", id: "my-position" %>
         <% end %>
     </div>
   </div>
@@ -22,7 +22,7 @@
         <%= f.input :full_address %>
         <%= f.input  :name, collection: ["Home", "Work", "Other"] %>
         <div class="container ml-2">
-          <%= f.input :active, label: "Select as default address", as: :boolean %>
+          <%= f.input :active, label: "Default address", as: :boolean %>
         </div>
         <%= f.submit class: "btn btn-light" %>
       <% end %>

@@ -14,7 +14,7 @@
         <% end %>
       </div>
 
-      <p class="welcome-message"><%= "Hello, #{@user.first_name}!" %></p>
+      <p class="welcome-message"><%= "Hello #{@user.first_name}!" %></p>
       <div id="user-address">
         <% if @user.addresses.find_by(active: true) %>
           <%= link_to user_addresses_path(@user) do %>
@@ -39,7 +39,7 @@
     <div class="bottom-div">
       <div class="btn-middle">
         <button type="button" class="btn-lesconvives" data-toggle="modal" data-target="#exampleModalCenter">
-          Create a new event
+          My new event
           <i class="fas fa-plus-circle"></i>
         </button>
       </div>
