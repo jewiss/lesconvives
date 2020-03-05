@@ -96,10 +96,10 @@
       </div>
       <%= simple_form_for(@event) do |f| %>
         <div class="modal-body">
-            <%= f.input :name, label: "Name it !" %>
+            <%= f.input :name, label: "Give it a Name!" %>
             <div class="d-flex justify-content-between">
-              <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "When is it ?"%>
-              <%= f.input :hour, as: :string, input_html: {class: "hourpicker"}, label: "At what time ?" %>
+              <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "When is it happening?"%>
+              <%= f.input :hour, as: :string, input_html: {class: "hourpicker"}, label: "At what time?" %>
             </div>
         </div>
         <div class="modal-footer">
