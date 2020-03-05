@@ -7,7 +7,7 @@ const selectRestaurant = () => {
           restaurant.classList.remove("active");
         else
           restaurant.classList.add("active");
-          $.ajax({type: "POST", url: "/selected_restaurants", data: {restaurant_id: restaurant.dataset.selectedRestaurant, event_id: restaurant.dataset.selectedEvent }})
+          $.ajax({type: "POST", url: "/selected_restaurants", data: {restaurant: restaurant.dataset.selectedRestaurant, event: restaurant.dataset.selectedEvent }})
           });
     });
   };
