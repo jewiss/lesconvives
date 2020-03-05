@@ -4,7 +4,6 @@ const getUserLocation = () => {
     userPosition.addEventListener("click", (event) => {
       event.preventDefault();
       navigator.geolocation.getCurrentPosition((data) => {
-        console.log(data);
         const latitude = document.getElementById('address_latitude');
         latitude.value = data.coords.latitude;
         const longitude = document.getElementById('address_longitude');
