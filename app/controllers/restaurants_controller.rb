@@ -39,6 +39,7 @@ class RestaurantsController < ApplicationController
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         details: {
+          id: restaurant.id,
           name: restaurant.name,
           rating: restaurant.rating,
           short_address: restaurant.short_address,

@@ -1,7 +1,12 @@
-.test {
+.resto-cards {
   height: 1vh;
   position: relative;
   top: -16vh;
+  display: none;
+}
+
+.link-show-resto {
+  text-decoration: none;
 }
 
 .card-resto {
@@ -11,6 +16,13 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  width: 95%;
+  margin: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+  & a {
+    text-decoration: none;
+  }
 }
 
 .card-resto img {
@@ -23,6 +35,8 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  text-decoration: none;
+  color: $darkblue;
 }
 
 .card-resto p {
@@ -31,13 +45,25 @@
   opacity: .7;
   margin-bottom: 4px;
   margin-top: 4px;
+  text-decoration: none;
+  color: $darkblue;
 }
 
 .card-resto .card-resto-infos {
   padding: 16px;
+
 }
 
 .card-resto-infos {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  & h2 {
+    opacity: 0.8;
+  }
 }
+
+  h2.card-trip-pricing  {
+    opacity: 0.6;
+  }
