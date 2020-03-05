@@ -34,7 +34,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.find(params[:id])
     @event = @participant.event
     @participant.destroy
-    redirect_to new_event_participant_path(@event)
+    redirect_to new_event_participant_path(@event, :anchor => "anchor")
   end
 
 end
