@@ -55,7 +55,7 @@ class RestaurantsController < ApplicationController
       else
         icon = { url: (participant.user.facebook_picture_url || "http://placehold.it/30x30"), scaledSize: { width: 50, height: 50, borderRadius: '50px'} }
       end
-      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon, infoWindow: { content: render_to_string(partial: "/participants/infowindow", locals: { participant: participant }) } }
+      @markers = @markers << { lat: coordinates[0], lng: coordinates[1], icon: icon }
     end
   end
 

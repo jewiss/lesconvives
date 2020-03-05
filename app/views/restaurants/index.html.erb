@@ -5,53 +5,32 @@
     height: 80vh;"></div>
 </div>
 
-<div class="meeting-point" id="meetpoint"><p>📍 <%= @geographic_center %></p></div>
-
-
-<div class="fixed-filter">
-  <div class="btn-middle">
-    <button type="button" class="btn-filter" data-toggle="modal" data-target="#exampleModalCenter">
-      <i class="fas fa-filter"></i>
-    </button>
+<div class="align-button">
+  <div class="fixed-filter">
+    <div class="btn-middle">
+      <button type="button" class="btn-filter" data-toggle="modal" data-target="#exampleModalCenter">
+        <i class="fas fa-filter"></i>
+      </button>
+    </div>
+  </div>
+  <div id="meetpoint">
+    <p class="meeting-point" >📍 <%= @geographic_center %></p>
   </div>
 </div>
 
 <div class="container">
-  <div class="cards">
-    <% @results_restaurants.each do |result|%>
-      <%= link_to restaurant_path(result, event: params[:event]) do %>
-
-      <% if result.photo.attached? %>
-        <div class="card-trip mx-3">
-          <div style="position: relative">
-              <%= cl_image_tag result.photo.key , alt: "photo restaurant", crop: :fill %>
-             <a href="javascript: void(0)"><i class="fas fa-check-circle restaurant-select" data-selected-restaurant="<%= result.id %>" data-selected-event="<%= @event.id %>" style="position: absolute;"></i></a>
-          </div>
-          <div class="card-trip-infos">
-            <div>
-              <p> <%= result.name %> </p>
-              <% if result.rating %>
-                <p>
-                  <% result.rating.times do%>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                  <% (5 - result.rating).times do %>
-                    <i class="fas fa-star" id="level-missing"></i>
-                  <% end %>
-                </p>
-              <% end %>
-              <p> <%= result.short_address %></p>
-            </div>
-            <h2 class="card-trip-pricing"><%= ("€"*result.price_level.to_i) %></h2>
-          </div>
-        </div>
-      <% end %>
-      <% end %>
-    <% end %>
-  </div>
-<div>
-    <%= link_to "Back to Friends List", new_event_participant_path(@event), class: "btn btn-lesconvives", id:"loader"%>
-</div>
+  <% @participants.each do |participant| %>
+      <p>
+      <% if participant.user.profile_picture.attached? %>
+        <%= cl_image_tag participant.user.profile_picture.key, class:"avatar" %>
+      <% else %>
+        <%= participant.user.facebook_picture_url || "http://placehold.it/30x30"%>
+      <%end %>
+       ⏱️<%= @directions[participant][:transit_duration] %>
+       📍<%= @directions[participant][:transit_distance] %>
+      </p>
+      <hr>
+  <% end %>
 </div>
 
 
@@ -112,5 +91,42 @@
   </div>
 </div>
 
+<!-- Card des restos
 
+ <div class="cards">
+    <%# @results_restaurants.each do |result|%>
+      <%#= link_to restaurant_path(result, event: params[:event]) do %>
+
+      <%# if result.photo.attached? %>
+        <div class="card-trip mx-3">
+          <div style="position: relative">
+              <%#= cl_image_tag result.photo.key , alt: "photo restaurant", crop: :fill %>
+             <a href="javascript: void(0)"><i class="fas fa-check-circle restaurant-select" data-selected-restaurant="<%#= result.id %>" data-selected-event="<%#= @event.id %>" style="position: absolute;"></i></a>
+          </div>
+          <div class="card-trip-infos">
+            <div>
+              <p> <%#= result.name %> </p>
+              <%# if result.rating %>
+                <p>
+                  <%# result.rating.times do%>
+                    <i class="fas fa-star"></i>
+                  <%# end %>
+                  <%# (5 - result.rating).times do %>
+                    <i class="fas fa-star" id="level-missing"></i>
+                  <%# end %>
+                </p>
+              <%# end %>
+              <p> <%#= result.short_address %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%#= ("€"*result.price_level.to_i) %></h2>
+          </div>
+        </div>
+      <%# end %>
+      <%# end %>
+    <%# end %>
+  </div>
+<div>
+    <%#= link_to "Back to Friends List", new_event_participant_path(@event), class: "btn btn-lesconvives", id:"loader"%>
+</div>
+-->
 

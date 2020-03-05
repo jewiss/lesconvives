@@ -21,10 +21,6 @@
   padding-left: 16px;
 }
 
-.btn-middle {
-  margin-top: 16px;
-}
-
 .btn-filter {
   font-size: 16px;
   padding: 8px 12px;
@@ -39,12 +35,17 @@
 }
 
 .fixed-filter {
-  position: relative;
-  bottom: 10px;
-  z-index: 1000;
+  width: fit-content;
 }
 
 #btn-close-position {
   bottom: 30px;
   left: 55px;
+}
+
+.align-button {
+  position: relative;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
