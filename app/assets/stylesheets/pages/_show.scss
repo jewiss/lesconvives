@@ -5,8 +5,26 @@
   justify-content: center;
 }
 
+.list-group {
+	width: 100%;
+	text-align: left;
+	color: #333333;
+  .hourglass,
+  a,
+  #title-resto,
+  #level-missing,
+  i {
+    color: $darkblue;  
+  }
+  .hourglass {
+    font-weight: bold;
+  }
+}
+
+
+
 .img-background {
- height: 300px;
+ height: 240px;
  background-size: cover;
  width: 100%;
 }
@@ -24,11 +42,6 @@
   width: 100%;
 }
 
-.list-group {
-	width: 100%;
-	text-align: left;
-	color: #333333;
-}
 
 #user-address {
   font-size: 15px;
@@ -51,21 +64,23 @@
   opacity: 0.8;
 }
 
-.btn-conv {
-	padding: 8px 16px;
-  border-radius: 16px;
-  transition: background 0.3s ease;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  width: 300px;
-  text-align: center;
-  background-color: #1EDD88;
-  display: block;
-  color: white;
-}
 
 #title-resto {
 	font-size: 24px;
 	font-weight: bold;
+}
+
+
+
+p.hours {
+  margin-bottom: 2px;
+  font-size: 15px;
+}
+
+.fa-chevron-left {
+  color: white;
+    font-size: 23px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: absolute;
 }
