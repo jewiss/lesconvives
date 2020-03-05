@@ -38,6 +38,14 @@ class RestaurantsController < ApplicationController
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
+        details: {
+          name: restaurant.name,
+          rating: restaurant.rating,
+          short_address: restaurant.short_address,
+          photo_key: restaurant.photo.key,
+          price_level: restaurant.price_level.to_i
+        },
+
         # icon: ActionController::Base.helpers.asset_url('restaurant.png')
         infoWindow: { content: render_to_string(partial: "/restaurants/infowindow", locals: { restaurant: restaurant }) }
       }
