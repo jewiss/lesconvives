@@ -4,7 +4,7 @@
   top: -16vh;
 }
 
-.card-product {
+.card-resto {
   overflow: hidden;
   height: 88px;
   background: white;
@@ -13,19 +13,19 @@
   align-items: center;
 }
 
-.card-product img {
+.card-resto img {
   height: 100%;
   width: 88px;
   object-fit: cover;
 }
 
-.card-product h2 {
+.card-resto h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-product p {
+.card-resto p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
@@ -33,11 +33,11 @@
   margin-top: 4px;
 }
 
-.card-product .card-product-infos {
+.card-resto .card-resto-infos {
   padding: 16px;
 }
 
-.card-product-infos {
+.card-resto-infos {
   display: flex;
   justify-content: space-between;
 }
