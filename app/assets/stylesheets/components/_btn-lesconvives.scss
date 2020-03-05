@@ -11,7 +11,17 @@
   box-shadow: 10px 10px 20px -8px rgba(0,0,0,0.24);
   margin-bottom: 10px !important;
   text-decoration: none;
+  &.cta-call {
+    width: 100%;
+    text-transform: uppercase;
+    margin: 0px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
+
+
 
 .fa-plus-circle {
   padding-left: 16px;
