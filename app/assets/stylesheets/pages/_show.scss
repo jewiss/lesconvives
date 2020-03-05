@@ -14,7 +14,7 @@
   #title-resto,
   #level-missing,
   i {
-    color: $darkblue;  
+    color: $darkblue;
   }
   .hourglass {
     font-weight: bold;
@@ -68,9 +68,17 @@
 #title-resto {
 	font-size: 24px;
 	font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  & a {
+    margin-right: 16px;
+    font-size: 24px;
+  }
 }
 
-
+.fa-check-circle {
+  opacity: 0.6;
+}
 
 p.hours {
   margin-bottom: 2px;

@@ -1,7 +1,7 @@
 class SelectedRestaurantsController < ApplicationController
 
   def create
-    SelectedRestaurant.create!(restaurant_id: params[:restaurant_id], event_id: params[:event_id])
+    SelectedRestaurant.create!(restaurant_id: params[:restaurant], event_id: params[:event])
   end
 
 end
