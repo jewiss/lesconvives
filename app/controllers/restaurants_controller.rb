@@ -34,8 +34,8 @@ class RestaurantsController < ApplicationController
         @results_restaurants = @results_restaurants.where(price_level: params[:price_level])
       end
     end
-    @markers = @results_restaurants.select {|r| r.latitude.present? && r.longitude.present?}.map do |restaurant|
-      {
+    @markers = @results_restaurants.select {|r| r.latitude.present? && r.longitude.present? && r.photo.present? }.map do |restaurant|
+        {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
         details: {
@@ -44,10 +44,10 @@ class RestaurantsController < ApplicationController
           short_address: restaurant.short_address,
           photo_key: restaurant.photo.key,
           price_level: restaurant.price_level.to_i
-        },
+        }
 
         # icon: ActionController::Base.helpers.asset_url('restaurant.png')
-        infoWindow: { content: render_to_string(partial: "/restaurants/infowindow", locals: { restaurant: restaurant }) }
+        #infoWindow: { content: render_to_string(partial: "/restaurants/infowindow", locals: { restaurant: restaurant }) }
       }
     end
 # markers for geocenter
