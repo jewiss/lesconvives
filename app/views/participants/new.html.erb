@@ -1,55 +1,58 @@
 <div style="height: 100vh;">
-<%= render 'shared/navbar' %>
-<div class="map-div d-flex justify-content-center">
-  <div id="map" data-markers="<%= @markers.to_json %>" style="width: 100%;
-    height: 80vh;"></div>
-</div>
-
-
-<div class="bottom-div">
-  <div class="btn-middle search-friend">
-    <%= form_tag new_event_participant_path(@event), method: :get do %>
-    <div class="d-flex justify-content-center">
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-          id:"search_query",
-        placeholder: "Search for a friend"
-      %>
-    <% end %>
-    </div>
+  <%= render 'shared/navbar' %>
+  <div class="map-div d-flex justify-content-center">
+    <div id="map" data-markers="<%= @markers.to_json %>" style="width: 100%;
+      height: 80vh;"></div>
   </div>
 
-  <div class="friend-cards pt-6">
-    <% @users.each do |user| %>
-      <% unless user.addresses.empty? %>
-        <div class="card-avatar-add">
-          <% if user.profile_picture.attached? %>
-            <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
-          <% elsif user.facebook_picture_url %>
-            <%= image_tag user.facebook_picture_url, class: "avatar" %>
-          <% else %>
-            <i class="card-no-avatar far fa-user"></i>
-          <% end %>
-          <p class="avatar-name">
-            <%= user.first_name %>
-          </p>
-          <% participant = Participant.find_by(user: user, event: @event) %>
-          <% if participant %>
-            <%= link_to participant_path(participant), method: :delete, remote: true, class: "add-button" do %>
-              <i class="fas fa-minus-circle btn-create"></i>
-            <% end %>
-          <% else  %>
-            <%= link_to event_participants_path(@event, user: user.id), method: :post, remote: true, class: "add-button" do %>
-              <i class="fas fa-plus-circle btn-create"> </i>
-            <% end %>
-          <% end %>
-        </div>
+  <div class="bottom-div">
+    <div class="btn-middle search-friend">
+      <%= form_tag new_event_participant_path(@event), method: :get do %>
+      <div class="d-flex justify-content-center">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+            id:"search_query",
+          placeholder: "Search for a friend"
+        %>
       <% end %>
-    <% end %>
+      </div>
+    </div>
+    <div>
+      <div id="anchor"></div>
+      <div class="friend-cards pt-6">
+        <% @users.each do |user| %>
+          <% unless user.addresses.empty? %>
+            <div class="card-avatar-add">
+              <% if user.profile_picture.attached? %>
+                <%= cl_image_tag user.profile_picture.key, class: "avatar" %>
+              <% elsif user.facebook_picture_url %>
+                <%= image_tag user.facebook_picture_url, class: "avatar" %>
+              <% else %>
+                <i class="card-no-avatar far fa-user"></i>
+              <% end %>
+              <p class="avatar-name">
+                <%= user.first_name %>
+              </p>
+              <% participant = Participant.find_by(user: user, event: @event) %>
+              <% if participant %>
+                <%= link_to participant_path(participant), method: :delete, class: "add-button" do %>
+                  <i class="fas fa-minus-circle btn-create"></i>
+                <% end %>
+              <% else  %>
+                <%= link_to event_participants_path(@event, user: user.id), method: :post, class: "add-button" do %>
+                  <i class="fas fa-plus-circle btn-create"></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+        <%= link_to "Let's Go!", restaurants_path(event: @event), class: "btn btn-lesconvives", id:"loader" %>
   </div>
+
 </div>
-    <%= link_to "Let's Go!", restaurants_path(event: @event), class: "btn btn-lesconvives", id:"loader" %>
-</div>
+
 <img src="https://media.giphy.com/media/RKpEx82Qv99Ddw31GJ/giphy.gif" alt="loader" class="loader-gif">
 

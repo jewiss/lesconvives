@@ -1,0 +1,50 @@
+// // Obviously doesn't need to be on window
+// window.scrollPosition = {x: 0, y: 0} // Our 'old' scroll position
+// window.lastHref = null // Our 'old' page href
+
+// // Before visit, simply store scroll position & url/href
+// document.addEventListener('turbolinks:before-visit', function () {
+//   window.scrollPosition = {x: window.scrollX, y: window.scrollY}
+//   window.lastHref = window.location.href
+// }, false)
+
+// console.log(window.scrollY);
+
+// // After load
+//   document.addEventListener('turbolinks:load', function () {
+//     // If we have a scroll position AND we're on the same page
+//     if (window.scrollPosition && (this.location.href == window.lastHref)) {
+//       // Scroll to our previous position
+//       window.scrollTo(window.scrollPosition.x, window.scrollPosition.y)
+//     }
+//   }, false)
+
+
+//   -----
+
+//   window.onload = function(){
+//   const ul = document.getElementById('list-of-squares')
+//   const li = ul.querySelectorAll('.square')
+//   const json = localStorage.getItem('colors')
+//   if(json){
+//     const colors = JSON.parse(json)
+//     for(i=0 ; i<li.length ; i++){
+//       if(colors[i]){
+//         li[i].innerHTML = colors[i]
+//       }
+//     }
+//   }
+//   const buttons = document.querySelectorAll('.btn');
+//   buttons.forEach((button) => {
+//     button.addEventListener('click', (event) => {
+//       for (i=li.length-1 ; i > 0; i--) {
+//         li[i].innerText = li[i-1].innerText;
+//       }
+//       li[0].innerText = event.currentTarget.dataset.color;
+//       const colors = []
+//       li.forEach((l) => colors.push(l.innerText))
+//       // const colors = Array.from(li).map(e => e.innerText)
+//       localStorage.setItem('colors', JSON.stringify(colors))
+//     })
+//   })
+
