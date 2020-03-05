@@ -56,7 +56,7 @@
   </ul>
 
 <div style="margin-top: 15px; display:flex; justify-content: center; text-align: center;">
-    <%= link_to @restaurant.phone ? "tel:#{@restaurant.phone}" : @restaurant.url, class: "btn-lesconvives cta-call", target: "_blank" do %>
+    <%= link_to @restaurant.phone ? "tel:#{@restaurant.phone}" : @restaurant.url, class: "btn-lesconvives cta-call", target: @restaurant.phone ? "" : "_blank" do %>
       Make a Reservation  <i class="fas <%= @restaurant.phone ? "fa-phone" : "fa-globe" %>"></i>
     <% end %>
 </div>
