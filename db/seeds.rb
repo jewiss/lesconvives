@@ -66,10 +66,15 @@ puts "12 users created"
 # alicheur = Restaurant.create!(name: "L'Alicheur", price_level: '1', rating: '4.7', food_category: 'Chinese', address: '96 Rue Saint-Maur, 75011 Paris, France', phone: '01 43 38 61 38', url: 'www.lalicheur.com')
 # tokugawa = Restaurant.create!(name: 'Tokugawa', price_level: '2', rating: '4.2', food_category: 'Japanese', address: '49 Boulevard du Montparnasse, 75006 Paris, France', phone: '01 42 22 32 59', url: 'tokugawa.fr')
 
-losamigos_pic = URI.open('https://u.tfstatic.com/restaurant_photos/307/406307/169/612/los-amigos-vue-de-la-salle-e20a9.jpg')
+losamigos_pic = URI.open('https://images.unsplash.com/photo-1566568494596-fd8b9eb08664?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')
 losamigos = Restaurant.create!(name: 'Los Amigos', price_level: '3', rating: '4.5', food_category: 'Mexican', address: "23 Rue d'Enghien, 75010 Paris, France", phone: '01 45 89 80 21', url: 'losamigos.fr')
 losamigos.photo.attach(io: losamigos_pic, filename: 'losamigos_pic.png', content_type: 'image/png')
-
+leresto_pic = URI.open('https://images.unsplash.com/photo-1530799164-fe981d01a118?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')
+leresto = Restaurant.create!(name: 'Le Resto', price_level: '3', rating: '4.7', food_category: 'French', address: "8 Rue Tournefort, 75005 Paris, France", phone: '01 43 37 10 66', url: 'lerestoparis.fr')
+leresto.photo.attach(io: leresto_pic, filename: 'leresto_pic.png', content_type: 'image/png')
+kura_pic = URI.open('https://images.unsplash.com/photo-1530260626688-048279320445?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=752&q=80')
+kura = Restaurant.create!(name: 'kura', price_level: '3', rating: '4.5', food_category: 'Japanese', address: "56 Rue de Boulainvilliers, 75016 Paris, France", phone: '01 45 20 18 32', url: 'restaurantkura.com')
+kura.photo.attach(io: kura_pic, filename: 'kura_pic.png', content_type: 'image/png')
 
 puts "-------"
 puts 'restaurant "Los Amigos" created'
@@ -108,9 +113,9 @@ d3 = Date.new(2020,02,13)
 after_gaudelet = Event.create!(date: Date.new(2020,02,24), hour: Time.new(d1.year, d1.month, d1.day, 20, 00).asctime.in_time_zone("Paris"), name: 'Afterwork Gaudelet')
 SelectedRestaurant.create(restaurant: losamigos, event: after_gaudelet)
 lewagon_karaoke = Event.create!(date: Date.new(2020,02,18), hour: Time.new(d2.year, d2.month, d2.day, 21, 00).asctime.in_time_zone("Paris"), name: 'Dinner & Karaoke')
-SelectedRestaurant.create(restaurant: losamigos, event: lewagon_karaoke)
+SelectedRestaurant.create(restaurant: leresto, event: lewagon_karaoke)
 friends_lunch = Event.create!(date: Date.new(2020,02,13), hour: Time.new(d3.year, d3.month, d3.day, 12, 30).asctime.in_time_zone("Paris"), name: 'Catch-up Lunch')
-SelectedRestaurant.create(restaurant: losamigos, event: friends_lunch)
+SelectedRestaurant.create(restaurant: kura, event: friends_lunch)
 
 # lunch_dance = Event.create!(date: Date.parse('2020-02-03'), name: 'Lunch Dance Studio')
 # dinner_family = Event.create!(date: Date.parse('2020-02-22'), name: 'Family Dinner')
