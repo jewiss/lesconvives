@@ -22,7 +22,8 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  box-shadow: 0px 0px 5px -1px;
+  border: 1px solid lightgrey;
+  // box-shadow: 0px 0px 5px -1px;
 }
 .restaurants_food_category input:checked + label {
   background-color: #142850;

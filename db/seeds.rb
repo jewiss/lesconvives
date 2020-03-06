@@ -53,13 +53,14 @@ sovana = User.create!(first_name: 'Sovana', last_name: 'Romano', email: 'soro@sf
 sovana.profile_picture.attach(io: sovana_pic, filename: 'sovana_pic.png', content_type: 'image/png')
 tim = User.create!(first_name: 'Tim', last_name: 'Regis', email: 'timreg@sfr.fr', password: '123456')
 tim.profile_picture.attach(io: tim_pic, filename: 'tim_pic.png', content_type: 'image/png')
-estelle = User.create!(first_name: 'estelle', last_name: 'Saget', email: 'estellesag@sfr.fr', password: '123456')
+estelle = User.create!(first_name: 'Estelle', last_name: 'Saget', email: 'estellesag@sfr.fr', password: '123456')
 estelle.profile_picture.attach(io: estelle_pic, filename: 'estelle_pic.png', content_type: 'image/png')
 renaud = User.create!(first_name: 'Renaud', last_name: 'Dor', email: 'renauddor@sfr.fr', password: '123456')
 renaud.profile_picture.attach(io: renaud_pic, filename: 'renaud_pic.png', content_type: 'image/png')
-ambre = User.create!(first_name: 'ambre', last_name: 'Mgt', email: 'ambremgt@sfr.fr', password: '123456')
+ambre = User.create!(first_name: 'Ambre', last_name: 'Mgt', email: 'ambremgt@sfr.fr', password: '123456')
 ambre.profile_picture.attach(io: ambre_pic, filename: 'ambre_pic.png', content_type: 'image/png')
 puts "12 users created"
+
 
 # Restaurants
 # levalois = Restaurant.create!(name: 'Le Valois', price_level: '2', rating: '4.3', food_category: 'French', address: '52 Rue de Douai, 75009 Paris, France', phone: '06 44 05 17 79', url: 'www.le-valois.fr')
