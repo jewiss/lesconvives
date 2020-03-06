@@ -41,7 +41,7 @@ const initMap = () => {
         const sym = "€"
         const pricing = sym.repeat(marker.details.price_level)
         document.querySelector(".card-trip-pricing").innerText = pricing;
-          
+
         });
       };
     });

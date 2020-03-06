@@ -1,11 +1,18 @@
 .meeting-point {
   border-radius: 16px;
   width: fit-content;
-  margin-right: 10vw;
-  background-color: #fd746c;
+  margin-right: 4vw;
+  margin-left: 4vw;
   background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
-  padding: 6px 10px;
+  padding: 8px 12px;
+  transition: background 1s linear;
+}
+
+
+.meeting-point.zoom-in {
+  transition: background 1s linear;
+  background: $darkblue;
 }
 
 p.meeting-point {
