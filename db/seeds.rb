@@ -61,6 +61,7 @@ ambre = User.create!(first_name: 'Ambre', last_name: 'Mgt', email: 'ambremgt@sfr
 ambre.profile_picture.attach(io: ambre_pic, filename: 'ambre_pic.png', content_type: 'image/png')
 puts "12 users created"
 
+
 # Restaurants
 # levalois = Restaurant.create!(name: 'Le Valois', price_level: '2', rating: '4.3', food_category: 'French', address: '52 Rue de Douai, 75009 Paris, France', phone: '06 44 05 17 79', url: 'www.le-valois.fr')
 # alicheur = Restaurant.create!(name: "L'Alicheur", price_level: '1', rating: '4.7', food_category: 'Chinese', address: '96 Rue Saint-Maur, 75011 Paris, France', phone: '01 43 38 61 38', url: 'www.lalicheur.com')
