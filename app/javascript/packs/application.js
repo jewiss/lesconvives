@@ -50,7 +50,13 @@ document.addEventListener('turbolinks:load', () => {
   selectRestaurant();
 });
 
+  const btn = document.querySelector(".meeting-point")
 
+  if (btn) {
+    btn.addEventListener("click", (event) => {
+    btn.classList.toggle("zoom-in")
+    });
+  }
 
 
 
