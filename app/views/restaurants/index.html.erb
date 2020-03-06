@@ -11,12 +11,14 @@
     <div class="card-resto">
       <img class="resto-img" alt="photo restaurant" src="">
       <div class="card-resto-infos">
-        <div>
+        <div class="resto-header">
           <h2 class="resto-name"> </h2>
+          <h2 class="card-trip-pricing"></h2>
+        </div>
+        <div>
           <p class="resto-rating"></p>
           <p class="resto-short-address"></p>
         </div>
-        <h2 class="card-trip-pricing"></h2>
       </div>
     </div>
 
@@ -38,7 +40,7 @@
   <% @participants.each do |participant| %>
       <p>
       <% if participant.user.profile_picture.attached? %>
-        <%= cl_image_tag participant.user.profile_picture.key, class:"avatar" %>
+        <%= cl_image_tag participant.user.profile_picture.key, class: "avatar transit-time" %>
       <% else %>
         <%= participant.user.facebook_picture_url || "http://placehold.it/30x30"%>
       <%end %>
