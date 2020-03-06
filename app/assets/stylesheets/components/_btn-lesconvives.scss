@@ -21,6 +21,10 @@
   }
 }
 
+button:focus {
+  outline: none;
+}
+
 .fa-plus-circle {
   padding-left: 16px;
 }
