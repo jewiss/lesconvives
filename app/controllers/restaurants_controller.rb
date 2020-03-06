@@ -166,7 +166,7 @@ class RestaurantsController < ApplicationController
     @participants = @event.participants
     directions = {}
     @participants.each do |participant|
-      url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{participant.address.latitude},#{participant.address.longitude}&destinations=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&units=metric&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
+      url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=#{participant.address.latitude},#{participant.address.longitude}&destinations=#{geographic_center[0]},#{geographic_center[1]}&mode=transit&key=#{ENV["GOOGLE_MAPS_TOKEN"]}"
       directions_serialized = open(url).read
       parsed_directions = JSON.parse(directions_serialized)
       transit_duration = parsed_directions['rows'].first['elements'].first['duration']['text']
